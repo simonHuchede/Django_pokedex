@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import requests
 
 def index(request):
-    Text="<h1>Pokédex en construction</h1>"
-    return HttpResponse(Text)
-
+    context = {
+        
+    }
+    return render(request, 'index.html', context)
