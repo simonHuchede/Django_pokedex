@@ -32,29 +32,30 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h2 class="pokemon-title"></h2>
+                    <h2 class="pokemon-title">{{ pokemon.name}}</h2>
                 </div>
                 <div class="card-body">
                     <div class="card-img">
-                        <img src="" alt="_image">
+                        <img alt="_image" src={{ url }} >
                     </div>
                     <div class="informations">
                         <p class="description"></p>
                         <label class="label_height">Height :</label>
-                        <p class="height"></p>
+                        <p class="height">{{pokemon.height}}</p>
                         <label for="" class="label_weight">Weight :</label>
-                        <p class="weight"></p>
+                        <p class="weight">{{pokemon.weight}}kg</p>
                         <label class="sex">Sex :</label>
-                        <p class="sex"></p>
+                        <p class="sex">
+                        </p>
                     </div>
-                    <div class="hidden">
+                    <div hidden>
                         <div class="stats">
-                            <div id="pv"></div>
-                            <div id="atq"></div>
-                            <div id="def"></div>
-                            <div id="atqspe"></div>
-                            <div id="defspe"></div>
-                            <div id="spd"></div>
+                            <div id="hp">{{stats.hp.base_stat}}</div>
+                            <div id="atq">{{stats.atq.base_stat}}</div>
+                            <div id="def">{{stats.def.base_stat}}</div>
+                            <div id="atqspe">{{stats.atqSpe.base_stat}}</div>
+                            <div id="defspe">{{stats.defSpe.base_stat}}</div>
+                            <div id="spd">{{stats.speed.base_stat}}</div>
                         </div>
                     </div>
                     <div class="stats">
