@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+    <title>Pokédex</title>
+    
+</head>
+<body>
+    <header>
+        <div class="container-header">
+            <nav class="navbar">
+                <div class="header-logo">
+                    <img  class="logo" src="{% static '/img/pokedex_icon.svg' %}" alt="logo"  >
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">My teams</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="arrows">
+                <div class="left-arrow"></div>
+                <div class="right-arrow"></div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="pokemon-title"></h2>
+                </div>
+                <div class="card-body">
+                    <div class="card-img">
+                        <img src="" alt="_image">
+                    </div>
+                    <div class="informations">
+                        <p class="description"></p>
+                        <label class="label_height">Height :</label>
+                        <p class="height"></p>
+                        <label for="" class="label_weight">Weight :</label>
+                        <p class="weight"></p>
+                        <label class="sex">Sex :</label>
+                        <p class="sex"></p>
+                    </div>
+                    <div class="hidden">
+                        <div class="stats">
+                            <div id="pv"></div>
+                            <div id="atq"></div>
+                            <div id="def"></div>
+                            <div id="atqspe"></div>
+                            <div id="defspe"></div>
+                            <div id="spd"></div>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static '/js/index.js' %}"></script>
+    </main>
+</body>
+</html>

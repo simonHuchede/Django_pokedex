@@ -11,5 +11,5 @@ def index(request):
         context={
     'pokemonList': pokemonList
     }
-    return render(request,"index.html",context)
+    return render(request,"app_pokedex/index.html",context)
 
