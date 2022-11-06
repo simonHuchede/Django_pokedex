@@ -34,10 +34,10 @@
             <div class="card-header">
                 <h2 class="pokemon-title">{{ pokemon.name}}</h2>
             </div>
-            <div class="card column">
-                <div class="card-header row-center">
+            <div class="card">
+                <div class="card-header row center">
                     <div class="card-img row-item">
-                        <img alt="_image" src={{ pokemon.sprite }} >
+                        <img alt="{{pokemon.name}}_image" src={{ pokemon.sprite }} >
                         <div class="type row">
                             {% for type in pokemon.types %}
                             <div class="card-type {{type.type.name}}"title="{{type.type.name}}">
@@ -47,7 +47,10 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="informations row-item">
+                </div>
+                <div class="card-body row-center">
+                    
+                    <div class="informations">
                         <p class="description"></p>
                         <label class="label_height">Height </label>
                         <span class="height">{{pokemon.height}}</span><br>
@@ -57,29 +60,26 @@
                         <span class="sex">
                         </span>
                     </div>
-                </div>
-                <div class="card-body row-center">
-                    <div hidden>
-                        <div>
-                            <input id="hp" value={{pokemon.stats.hp}}>
-                            <input id="atq" value={{pokemon.stats.atq}}>
-                            <input id="def" value={{pokemon.stats.def}}> 
-                            <input id="atqspe" value={{pokemon.stats.atqSpe}}>
-                            <input id="defspe" value={{pokemon.stats.defSpe}}>
-                            <input id="speed" value={{pokemon.stats.speed}}>
-                        </div>
-                    </div>
-                   
-                    <div class="temporaire">
-
-                    </div>
                     <div class="stats">
                         <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
-                    <div class="abilities">
-
+                    <div class="abilities column">
+                        <h2 class="subtitle subtitle-ability">Abilities : </h2>
+                        {% for ability in pokemon.abilities %}
+                        <span class="ability">{{ability.name}}</span>
+                        {% endfor %}
                     </div>
                 </div>
+            </div>
+        </div>
+        <div hidden>
+            <div>
+                <input id="hp" value={{pokemon.stats.hp}}>
+                <input id="atq" value={{pokemon.stats.atq}}>
+                <input id="def" value={{pokemon.stats.def}}> 
+                <input id="atqspe" value={{pokemon.stats.atqSpe}}>
+                <input id="defspe" value={{pokemon.stats.defSpe}}>
+                <input id="speed" value={{pokemon.stats.speed}}>
             </div>
         </div>
         <script src="{% static '/js/index.js' %}"></script>
