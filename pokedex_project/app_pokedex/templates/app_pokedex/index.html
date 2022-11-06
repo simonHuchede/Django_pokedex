@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/css/style.css '%}">
+    <link rel="stylesheet" href="{% static '/css/style-pokemon-types.css'%}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <title>Pokédex</title>
 </head>
@@ -58,8 +59,13 @@
                             <input id="speed" value={{pokemon.stats.speed}}>
                         </div>
                     </div>
-                    <div class="elements">
-
+                    <div class="type">
+                        {% for type in pokemon.types %}
+                        <div class="card-type {{type.type.name}}"title="{{type.type.name}}">
+                            <img src="{% static '/img/types/'%}{{type.type.name}}.svg" alt="type-image" class="svg-type" >
+                            <span>{{type.type.name}}</span>
+                        </div>
+                        {% endfor %}
                     </div>
                     <div class="temporaire">
 
