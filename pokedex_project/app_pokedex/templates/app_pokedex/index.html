@@ -17,7 +17,7 @@
                 <div class="header-logo">
                     <img  class="logo" src="{% static '/img/pokedex_icon.svg' %}" alt="logo"  >
                 </div>
-                <ul class="nav-list">
+                <ul class="nav-list row">
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">My teams</a></li>
                 </ul>
@@ -34,14 +34,22 @@
             <div class="card-header">
                 <h2 class="pokemon-title">{{ pokemon.name}}</h2>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img">
+            <div class="card column">
+                <div class="card-header row-center">
+                    <div class="card-img row-item">
                         <img alt="_image" src={{ pokemon.sprite }} >
+                        <div class="type row">
+                            {% for type in pokemon.types %}
+                            <div class="card-type {{type.type.name}}"title="{{type.type.name}}">
+                                <img src="{% static '/img/types/'%}{{type.type.name}}.svg" alt="type-image" class="svg-type" >
+                                <span>{{type.type.name}}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="informations">
+                    <div class="informations row-item">
                         <p class="description"></p>
-                        <label class="label_height">Height :</label>
+                        <label class="label_height">Height </label>
                         <span class="height">{{pokemon.height}}</span><br>
                         <label for="" class="label_weight">Weight :</label>
                         <span class="weight" >{{pokemon.weight}}kg</span><br>
@@ -49,6 +57,8 @@
                         <span class="sex">
                         </span>
                     </div>
+                </div>
+                <div class="card-body row-center">
                     <div hidden>
                         <div>
                             <input id="hp" value={{pokemon.stats.hp}}>
@@ -59,14 +69,7 @@
                             <input id="speed" value={{pokemon.stats.speed}}>
                         </div>
                     </div>
-                    <div class="type">
-                        {% for type in pokemon.types %}
-                        <div class="card-type {{type.type.name}}"title="{{type.type.name}}">
-                            <img src="{% static '/img/types/'%}{{type.type.name}}.svg" alt="type-image" class="svg-type" >
-                            <span>{{type.type.name}}</span>
-                        </div>
-                        {% endfor %}
-                    </div>
+                   
                     <div class="temporaire">
 
                     </div>
