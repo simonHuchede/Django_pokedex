@@ -1,7 +1,7 @@
 from django.db import models
 
 class Pokemon(models.Model):
-    def __init__(self,id,name,weight,height,types,baseexperience,abilities,sprites):
+    def __init__(self,id,name,weight,height,types,baseexperience,abilities,sprite, stats):
         self.id = id
         self.name = name
         self.weight =weight
@@ -9,6 +9,7 @@ class Pokemon(models.Model):
         self.types = types
         self.baseexperience = baseexperience
         self.abilities = abilities
-        self.sprites = sprites
+        self.sprite = sprite
+        self.stats = stats
 
 
