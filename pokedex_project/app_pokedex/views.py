@@ -10,6 +10,7 @@ def index(request):
     response = req.get(url)
     if response.status_code == 200:
         result = response.json()
+        # dictionary to build correctly the stats of the Pokemon
         stats = {
                 "hp" : result["stats"][0]['base_stat'],
                 "atq" : result["stats"][1]['base_stat'],
@@ -18,9 +19,10 @@ def index(request):
                 "defSpe" : result["stats"][4]['base_stat'],
                 "speed" : result["stats"][5]['base_stat']
                 }
+        # Instance of the model Pokemon        
         pokemon = Pokemon(
             result['id'],result['name'],result['weight'],result['height'],
-            result['types'][0]['type']['name'],
+            result['types'],
             result['base_experience'],
             result['abilities'][0]['ability']['name'],
             result['sprites']['other']['dream_world']['front_default'],
