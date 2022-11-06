@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css '%}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <title>Pokédex</title>
 </head>
 <body>
@@ -26,36 +29,46 @@
                 <div class="left-arrow"></div>
                 <div class="right-arrow"></div>
             </div>
+
+            <div class="card-header">
+                <h2 class="pokemon-title">{{ pokemon.name}}</h2>
+            </div>
             <div class="card">
-                <div class="card-header">
-                    <h2 class="pokemon-title">{{ pokemon.name}}</h2>
-                </div>
                 <div class="card-body">
                     <div class="card-img">
-                        <img alt="_image" src={{ url }} >
+                        <img alt="_image" src={{ pokemon.sprite }} >
                     </div>
                     <div class="informations">
                         <p class="description"></p>
                         <label class="label_height">Height :</label>
-                        <p class="height">{{pokemon.height}}</p>
+                        <span class="height">{{pokemon.height}}</span><br>
                         <label for="" class="label_weight">Weight :</label>
-                        <p class="weight">{{pokemon.weight}}kg</p>
+                        <span class="weight">{{pokemon.weight}}kg</span><br>
                         <label class="sex">Sex :</label>
-                        <p class="sex">
-                        </p>
+                        <span class="sex">
+                        </span>
                     </div>
                     <div hidden>
-                        <div class="stats">
-                            <div id="hp">{{stats.hp.base_stat}}</div>
-                            <div id="atq">{{stats.atq.base_stat}}</div>
-                            <div id="def">{{stats.def.base_stat}}</div>
-                            <div id="atqspe">{{stats.atqSpe.base_stat}}</div>
-                            <div id="defspe">{{stats.defSpe.base_stat}}</div>
-                            <div id="spd">{{stats.speed.base_stat}}</div>
+                        <div>
+                            <input id="hp" value={{pokemon.stats.hp}}>
+                            <input id="atq" value={{pokemon.stats.atq}}>
+                            <input id="def" value={{pokemon.stats.def}}> 
+                            <input id="atqspe" value={{pokemon.stats.atqSpe}}>
+                            <input id="defspe" value={{pokemon.stats.defSpe}}>
+                            <input id="speed" value={{pokemon.stats.speed}}>
                         </div>
+                    </div>
+                    <div class="elements">
+
+                    </div>
+                    <div class="temporaire">
+
                     </div>
                     <div class="stats">
                         <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="abilities">
+
                     </div>
                 </div>
             </div>
