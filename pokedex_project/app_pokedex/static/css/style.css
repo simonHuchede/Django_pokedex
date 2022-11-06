@@ -1,3 +1,5 @@
+@import url(https://fonts.bunny.net/css?family=zen-dots:400);
+/* font for types*/
 body{
     padding: 20px 50px 50px 50px;
 }
@@ -24,14 +26,33 @@ body{
 .pokemon-title{
     text-align: center;
 }
+
 .card-body{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+}   
+.card-img{ grid-area: 1 / 1 / 2 / 2; }
+.informations { grid-area: 1 / 2 / 2 / 3; }
+.type { 
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-area: 2 / 1 / 3 / 2; 
 }
-.card-img{
-    flex : 1 0 21%;
+.card-type {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    
 }
-.informations {
-    flex : 1 0 21%;
+.card-type > img {
+    height: 50px;
 }
+.card-type > span {
+    margin: auto;
+    font-family: 'Zen Dots';
+}
+.temporaire { grid-area: 2 / 2 / 3 / 3; }
