@@ -56,3 +56,8 @@ def index(request):
 
     return render(request,"app_pokedex/index.html",context)
 
+def requestArrow(request) :
+    url="https://pokeapi.co/api/v2/pokemon/"
+    if request.GET :
+        print('')
+        
