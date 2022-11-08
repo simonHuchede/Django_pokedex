@@ -24,7 +24,7 @@ def index(request):
             result['id'],result['name'],result['weight'],result['height'],
             result['types'],
             result['base_experience'],
-            result['abilities'][0]['ability']['name'],
+            result['abilities'],
             result['sprites']['other']['dream_world']['front_default'],
             stats
             )
