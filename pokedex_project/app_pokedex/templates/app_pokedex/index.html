@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%static '/img/pokedex_icon.svg'%}" type="image/x-icon/svg">
     <link rel="stylesheet" href="{% static '/css/style.css '%}">
     <link rel="stylesheet" href="{% static '/css/style-pokemon-types.css'%}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
@@ -66,7 +67,7 @@
                     <div class="abilities column">
                         <h2 class="subtitle subtitle-ability">Abilities : </h2>
                         {% for ability in pokemon.abilities %}
-                        <span class="ability">{{ability.name}}</span>
+                            <span class="ability">{{ability.ability.name}}</span>
                         {% endfor %}
                     </div>
                 </div>
