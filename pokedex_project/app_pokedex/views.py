@@ -61,3 +61,6 @@ def requestArrow(request) :
     if request.GET :
         print('')
         
+def my_team(request) :
+    
+    return render(request,"app_pokedex/my_team.html")
