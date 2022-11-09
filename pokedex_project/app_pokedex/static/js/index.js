@@ -28,7 +28,13 @@ const data = {
             'rgb(55, 429, 501)',
         ],
         borderColor : 'rgb(255,99,132)',
-        data : [stats.hp,stats.atq,stats.def,stats.atqSpe,stats.defSpe,stats.speed]
+        data : [stats.hp,
+            stats.atq,
+            stats.def,
+            stats.atqSpe,
+            stats.defSpe,
+            stats.speed,
+        ]
     }]
 }
 const config = {
