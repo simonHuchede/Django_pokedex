@@ -21,7 +21,7 @@ def index(request):
                 }
         # Instance of the model Pokemon        
         pokemon = Pokemon(
-            result['id'],result['name'],result['weight'],result['height'],
+            result['id'],result['name'].capitalize(),result['weight'],result['height'],
             result['types'],
             result['base_experience'],
             result['abilities'],
