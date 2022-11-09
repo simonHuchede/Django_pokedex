@@ -1,11 +1,42 @@
 @import url(https://fonts.bunny.net/css?family=zen-dots:400);
+
 /* font for types*/
+.light-theme{
+    --bg_container : hsla(228, 50%, 96%, 0.823);;
+    --bg : hsl(100,0,0);
+    --bigFont : rgb(204, 71, 0);
+    --minFont : hsl(228, 12%, 44%);
+    --toggle : hsl(230, 22%, 74%);
+    --navFont : hsl(232, 19%, 15%);
+    transition: ease-in .5s; 
+}
+#light_icon > path{
+    fill: black ;
+}
+#dark_icon > path{
+    fill: yellow;
+}
+.dark-theme{
+    --bg_container : hsl(228, 28%, 20%);
+    --bg : rgb(46, 40, 40);
+    --bigFont : hsl(0, 0%, 100%);
+    --minFont : hsl(228, 34%, 66%);
+    --toggle : linear-gradient(hsl(210, 78%, 56%),hsl(146, 68%, 55%));
+    transition: ease-in .5s;
+}
+.bigText{
+    color: var(--bigFont);
+}
+.minText{
+    color : var(--minFont); 
+}
 *{
     margin: 0;
     padding: 0;
 }
 body{
     padding: 20px 50px 50px 50px;
+    background-color: var(--bg);
 }
 .column{
     display: flex;
@@ -21,13 +52,20 @@ body{
     display: flex;
     justify-content: center;
 }
+.container{
+    border: solid 1px black;
+    border-radius: 50px;
+    background-color: var(--bg_container);
+    max-width: 800px;
+    margin: auto;
+}
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .nav-item{
-    margin-left: 25px;
+    margin-right: 25px;
     list-style: none;
 }
 .nav-item a {
@@ -45,7 +83,7 @@ body{
     height: 50px;
     display: flex;
     align-items: center;
-    
+    margin-right: 10px;
 }
 .card-type > img {
     height: 50px;
@@ -55,13 +93,16 @@ body{
     font-family: 'Zen Dots';
 }
 .ability{
-    margin: auto;
+    margin: 15px 15px 15px 0;
     width: 170px;
     height: 40px;
     padding: 10px;
     border: 2px solid;
     border-radius: 15px;
 }
+.abilities{
+    margin-left: 40px;
+}   
 .card{
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,4 +120,90 @@ body{
 }
 .informations{
     padding: 15px;
+}
+.img-container > img{
+    width: 150px;
+    height: 150px;
+}
+.card-header{
+    margin: 40px 0 40px 0;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 23px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--toggle);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 1px;
+    bottom: 2.5px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+input:checked + .slider {
+    background: var(--bg);
+}
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);  
+}
+.round {
+    border-radius: 34px;
+}
+.iconTheme > svg {
+    width: 20px;
+    height: 20px;
+}
+.nav-link{
+    color : var(--minFont);
+    font-size: 20px; 
+    display: inline-block;
+    position: relative;
+}
+.nav-link::after{
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    height: 2px;
+    width: 0;
+    background : var(--navFont);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+.nav-link:hover::after{
+    width: 100%;
+    left: 0;
+}
+li{
+    position: relative;
+}
+.iconTheme{
+    margin-right: 10px;
 }
