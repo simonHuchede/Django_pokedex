@@ -216,6 +216,7 @@ li{
     padding: 5px;
     border-radius: 10px;
     transition: all ease-in-out .5s;
+    cursor: pointer;
 }
 .card-moves:hover{
     transform: scale(1.07);
