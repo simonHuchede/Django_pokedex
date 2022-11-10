@@ -19,7 +19,9 @@ def index(request):
                 "defSpe" : result["stats"][4]['base_stat'],
                 "speed" : result["stats"][5]['base_stat']
                 }
-        # Instance of the model Pokemon        
+        # Instance of the model Pokemon
+        # https://pokeapi.co/api/v2/gender/?name=bulbasaur <- gender
+        
         pokemon = Pokemon(
             result['id'],result['name'].capitalize(),result['weight'],result['height'],
             result['types'],
@@ -64,3 +66,28 @@ def requestArrow(request) :
 def my_team(request) :
     
     return render(request,"app_pokedex/my_team.html")
+
+def moves(request, pokemon_id) :
+    
+
+    print(pokemon_id)
+    urlPokemon = "https://pokeapi.co/api/v2/pokemon/"+pokemon_id
+    res = req.get(urlPokemon).json()
+    pokemon = Pokemon(
+            res['id'],res['name'].capitalize(),res['weight'],res['height'],
+            res['types'],
+            res['base_experience'],
+            res['abilities'],
+            res['sprites']['other']['dream_world']['front_default'],
+            {}
+            )
+    movesListJson = res['moves']
+    movesList = []
+    for i in range(15) :
+        resMove = req.get(movesListJson[i]['move']['url']).json()
+        movesList.append(resMove)      
+    context = {
+        "pokemon" : pokemon,
+        "movesList" : movesList
+    }
+    return render(request, 'app_pokedex/moves.html', context)

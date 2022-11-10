@@ -1,0 +1,64 @@
+{% extends './index.html' %}
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheet %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static '/css/styleMovePage.css '%}">
+    {% endblock stylesheet %}
+
+
+    <link rel="stylesheet" href="{% static '/css/styleMovePage.css'%}">
+    <title>Moves of {{pokemon.name}}</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Mxoves of {{pokemon.name}} : </h1>
+    <div class="container-table">
+        <table class="table-moves">
+            <th class="move_name_h">
+                Name
+            </th>
+            <th class="move_type_h">
+                Type
+            </th>
+            <th class="move_power_h">
+                Power
+            </th>
+            <th class="move_accuracy_h">
+                Accuracy
+            </th>
+            <th class="move_pp_h">
+                PP
+            </th>
+            {% for move in movesList %}
+        <tr class="row_table move{{forloop.counter}}">
+            <td class="move_name">
+                {{move.name}}
+            </td>
+            <td class="move_type">
+                <div class="card-type {{move.type.name}}"title="{{move.type.name}}">
+                    <img src="{% static '/img/types/'%}{{move.type.name}}.svg" alt="type-image" class="svg-type" >
+                    <span class="">{{move.type.name|capfirst}}</span>
+                </div>
+            </td>
+            <td class="move_power">
+                {{move.power}}
+            </td>
+            <td class="move_accuracy">
+                {{move.accuracy}}
+            </td>
+            <td class="move_pp">
+                {{move.pp}}
+            </td>
+        </tr>
+    {% endfor %}
+        </table>
+    </div>
+    
+    {% endblock content %}
+</body>
+</html>
