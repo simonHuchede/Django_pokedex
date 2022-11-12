@@ -55,7 +55,5 @@ function submitForm(arrow) {
     let form = document.getElementById('formArrow')
     let input = document.getElementById('input_form')
     let inputPkm = document.getElementById('input_pkm_id')
-    input.value = arrow == "left" ? "left" : "right"
-    console.log(inputPkm.value)
     form.submit()
 }
