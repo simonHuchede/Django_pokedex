@@ -60,7 +60,7 @@
                             <div class="informations">
                                 <p class="description"></p>
                                 <label class="label_height ">Height : </label>
-                                <span class="height minText">{{pokemon.height}}</span><br>
+                                <span class="height minText">{{pokemon.height}} m</span><br>
                                 <label for="" class="label_weight ">Weight :</label>
                                 <span class="weight minText" >{{pokemon.weight}}kg</span><br>
                             </div>
@@ -111,6 +111,7 @@
                 <input id="defspe" value={{pokemon.stats.defSpe}}>
                 <input id="speed" value={{pokemon.stats.speed}}>
             </div>
+            
         </div>
     {% endblock content %}
     <script src="{% static '/js/index.js' %}"></script>
