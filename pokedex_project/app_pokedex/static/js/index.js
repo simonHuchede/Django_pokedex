@@ -6,20 +6,17 @@ const stats = {
     'defSpe' : document.getElementById('defspe').value,
     'speed' : document.getElementById('speed').value
 }
-console.log(stats)
 const labels = [
-    'HP' ,
+    'HP',
     'Attack',
     'Defense',
     'Attack special',
     'Defense special',
-    'speed'
+    'Speed'
 ]
 const data = {
     labels : labels,
     datasets : [{
-        label : 'Statistics',
-        labels : labels,
         backgroundColor : [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
@@ -42,11 +39,23 @@ const config = {
     type : 'bar',
     data : data,
     options : {
-        interaction : {
-            mode : 'index'
-        },
         responsive : false,
         maintainAspectRatio : false,
+        plugins : {
+            legend : {
+                display : false,
+            }
+        }
     }
 }
+
 const chart = new Chart(document.getElementById('myChart'),config);
+
+function submitForm(arrow) {
+    let form = document.getElementById('formArrow')
+    let input = document.getElementById('input_form')
+    let inputPkm = document.getElementById('input_pkm_id')
+    input.value = arrow == "left" ? "left" : "right"
+    console.log(inputPkm.value)
+    form.submit()
+}

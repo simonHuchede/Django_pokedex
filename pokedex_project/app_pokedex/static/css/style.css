@@ -1,10 +1,10 @@
 @import url(https://fonts.bunny.net/css?family=zen-dots:400);
-
-/* font for types*/
+@import url(https://fonts.bunny.net/css?family=roboto:400,700,900);
+/* font for types*/     
 .light-theme{
     --bg_container : hsla(228, 50%, 96%, 0.823);;
     --bg : hsl(100,0,0);
-    --bigFont : rgb(204, 71, 0);
+    --bigFont : rgb(0, 0, 0);
     --minFont : hsl(228, 12%, 44%);
     --toggle : hsl(230, 22%, 74%);
     --navFont : hsl(232, 19%, 15%);
@@ -39,6 +39,7 @@
 body{
     padding: 20px 50px 50px 50px;
     background-color: var(--bg);
+    font-family: 'Roboto', sans-serif;
 }
 .column{
     display: flex;
@@ -86,7 +87,6 @@ body{
     padding: 10px;
     display: flex;
     align-items: center;
-    margin-right: 10px;
 }
 .card-type > img {
     height: 40px;
@@ -130,6 +130,7 @@ body{
 }
 .card-header{
     margin: 40px 0 40px 0;
+    align-items: center;
 }
 .switch {
     position: relative;
@@ -225,4 +226,22 @@ li{
 }
 .link-moves{
     text-decoration: none;
+}
+.arrow > svg{
+    width: 40px;
+    height: 40px;
+    transition: ease-in-out .3s;
+}
+.arrow > svg > path {
+    fill: var(--bigFont);
+}
+.arrow> svg:hover{
+    transform: scale(1.2);
+}
+.pokemon-title{
+    font-weight: 900;
+    font-size: 40px;
+}
+.canvas {
+    color: #2196F3;
 }

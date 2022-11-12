@@ -43,18 +43,18 @@
     {% block content %}
     <main>
         <div class="container">
-            <div class="arrows">
-                <form action="">
-                    <div class="left-arrow"></div>
-                    <div class="right-arrow"></div>
-                </form>
-            </div>
-
             <div class="card-header">
-                <h2 class="pokemon-title bigText">{{ pokemon.name}}</h2>
+                <h1 class="pokemon-title bigText">{{ pokemon.name}}</h1>
             </div>
             <div class="card">
+                <form action="/" method="GET" id="formArrow">
                 <div class="card-header row center">
+                            <div class="left-arrow">
+                                <a href="#" class="left-arrow arrow" onclick="submitForm('left')" id="arrow-left">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5 11h-5v4l-5-5 5-5v4h5v2z"></path>
+                                    </svg>
+                                </a>
+                            </div>
                     <div class="card-img row-item">
                         <div class="img-container">
                             <img alt="{{pokemon.name}}_image" src={{ pokemon.sprite }} >
@@ -66,7 +66,6 @@
                                 <span class="weight minText" >{{pokemon.weight}}kg</span><br>
                             </div>
                         </div>
-                        
                         <div class="type row">
                             {% for type in pokemon.types %}
                             <div class="card-type {{type.type.name}}"title="{{type.type.name}}">
@@ -76,6 +75,15 @@
                             {% endfor %}
                         </div>
                     </div>
+                    <div class="right-arrow">
+                        <a href="#" class="right-arrow arrow" onclick="submitForm('right')" id="arrow-right">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 15v-4H7v-2h5V7l5 5-5 5z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <input type="text" name="pokemon_id" value = {{pokemon.id}} hidden id="input_pkm_id">
+                    <input type="text" id="input_form" hidden name="arrow">
+                </form>
                 </div>
                 <div class="card-body row-center">
                     <div class="stats">
@@ -85,8 +93,7 @@
                         <h2 class="subtitle subtitle-ability bigText">Abilities : </h2>
                         <ul>
                         {% for ability in pokemon.abilities %}
-                            
-                            <li class="ability minText">{{ability.ability.name|capfirst}}</li>
+                            <li class=" minText">{{ability.ability.name|capfirst}}</li>
                         {% endfor %}
                         </ul>
                         <div class="card-moves">

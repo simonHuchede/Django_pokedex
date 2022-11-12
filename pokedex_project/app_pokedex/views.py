@@ -5,8 +5,16 @@ import requests as req
 from .models import Pokemon
 
 def index(request):
-    rdm = randrange(150)    
-    url="https://pokeapi.co/api/v2/pokemon/"+str(rdm)
+    pokemon_id = 1
+    if request.GET :
+        pokemon_id = int(request.GET['pokemon_id'])
+        print(pokemon_id)
+        if(request.GET['arrow'] == "right") :
+            pokemon_id = int(request.GET['pokemon_id']) + 1
+        elif (request.GET['arrow'] == "left") :
+            pokemon_id = int(request.GET['pokemon_id']) - 1
+    print(pokemon_id)        
+    url="https://pokeapi.co/api/v2/pokemon/"+ str(pokemon_id)
     response = req.get(url)
     if response.status_code == 200:
         result = response.json()
@@ -56,20 +64,12 @@ def index(request):
             'pokemon': pokemon,
         }
 
-    return render(request,"app_pokedex/index.html",context)
-
-def requestArrow(request) :
-    url="https://pokeapi.co/api/v2/pokemon/"
-    if request.GET :
-        print('')
-        
+    return render(request,"app_pokedex/index.html",context)     
 def my_team(request) :
     
     return render(request,"app_pokedex/my_team.html")
 
 def moves(request, pokemon_id) :
-    
-
     print(pokemon_id)
     urlPokemon = "https://pokeapi.co/api/v2/pokemon/"+pokemon_id
     res = req.get(urlPokemon).json()
