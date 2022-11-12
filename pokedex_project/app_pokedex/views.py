@@ -24,7 +24,7 @@ def index(request):
         # https://pokeapi.co/api/v2/gender/?name=bulbasaur <- gender
         
         pokemon = Pokemon(
-            result['id'],result['name'].capitalize(),result['weight'],result['height'],
+            result['id'],result['name'].capitalize(),(result['weight'] / 10),result['height'] /10,
             result['types'],
             result['base_experience'],
             result['abilities'],
