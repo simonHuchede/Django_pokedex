@@ -1,19 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from random import randrange
 import requests as req
 from .models import Pokemon
 
 def index(request):
     pokemon_id = 1
     if request.GET :
-        pokemon_id = int(request.GET['pokemon_id'])
-        print(pokemon_id)
-        if(request.GET['arrow'] == "right") :
-            pokemon_id = int(request.GET['pokemon_id']) + 1
-        elif (request.GET['arrow'] == "left") :
-            pokemon_id = int(request.GET['pokemon_id']) - 1
-    print(pokemon_id)        
+        pokemon_id = request.GET['pokemon_id']
     url="https://pokeapi.co/api/v2/pokemon/"+ str(pokemon_id)
     response = req.get(url)
     if response.status_code == 200:
@@ -38,28 +31,6 @@ def index(request):
             result['sprites']['other']['dream_world']['front_default'],
             stats
             )
-        #pokemonObjList=[]
-        #for pokemon in pokemonList:
-        #    res = req.get(pokemon['url'])
-        #    pokemonjs = res.json()
-        #    stats = {
-        #        "hp" : pokemonjs["stats"][0],
-        #        "atq" : pokemonjs["stats"][1],
-        #        "def" : pokemonjs["sta#ts"][2],
-        #        "atqSpe" : pokemonjs["stats"][3],
-        #        "defSpe" : pokemonjs["stats"][4],
-        #        "speed" : pokemonjs["stats"][5]
-        #        }
-        #    pokemonobj = Pokemon(
-        #    pokemonjs['id'],pokemonjs['name'],pokemonjs['weight'],pokemonjs['height'],
-        #    pokemonjs['types'][0]['type']['name'],
-        #    pokemonjs['base_experience'],
-        #    pokemonjs['abilities'][0]['ability']['name'],
-        #    pokemonjs['sprites']['other']['dream_world']['front_default'],
-        #    stats
-        #    )
-        #    pokemonObjList.append(pokemonobj)
-        
         context={
             'pokemon': pokemon,
         }
@@ -70,7 +41,6 @@ def my_team(request) :
     return render(request,"app_pokedex/my_team.html")
 
 def moves(request, pokemon_id) :
-    print(pokemon_id)
     urlPokemon = "https://pokeapi.co/api/v2/pokemon/"+pokemon_id
     res = req.get(urlPokemon).json()
     pokemon = Pokemon(
