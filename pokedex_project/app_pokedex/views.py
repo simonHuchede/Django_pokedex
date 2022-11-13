@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import requests as req
 from .models import Pokemon
+from django.core.cache import cache
 
 def index(request):
     pokemon_id = 1
@@ -37,8 +37,15 @@ def index(request):
 
     return render(request,"app_pokedex/index.html",context)     
 def my_team(request) :
-    
-    return render(request,"app_pokedex/my_team.html")
+    #Store in the cache to avoid big requests permanently 
+    result = cache.get('listPokemon')
+    if not result : 
+        result = req.get('https://pokeapi.co/api/v2/pokemon/?limit=1151').json()['results']
+        cache.set('listPokemon', result)
+    context = {
+        "pokemonList" : result
+    } 
+    return render(request,"app_pokedex/my_team.html",context)
 
 def moves(request, pokemon_id) :
     urlPokemon = "https://pokeapi.co/api/v2/pokemon/"+pokemon_id
