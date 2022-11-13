@@ -1,16 +1,54 @@
 {% extends './index.html' %}
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheet %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static '/css/styleMyTeams.css'%}">
+    {% endblock stylesheet %}
     <title>My teams</title>
 </head>
 <body>
     {% block content %}
-    <h1>My teams : </h1>
-    .......................
-    
+    <div class="container">
+        <h1 style="text-align : center; margin-top : 40px" class="bigText">My teams : </h1>
+        <div class="dropdownContainer">
+            <div class="dropdown">
+                <input type="text" class="textBox" placeholder="Pokemons list">
+                <div class="option">
+                    {% for pokemon in pokemonList %}
+                     <div class="item" onclick="setText('{{pokemon.name|capfirst}}')">{{pokemon.name|capfirst}}</div>   
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="buildTeam">
+        </div>
+    </div>
+    <template id="template_card">
+        <div class="card_pokemon_team">
+            <div class="card_pokemon_team_name">
+                <span id="pokemon_name"></span>
+                <span>
+                    <svg onclick="deletePokemon(this)"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                    </svg>
+                </span>
+                {% comment %}
+	            <div class="card-type"></div>
+                {% endcomment %}
+            </div>
+            <div class="card_pokemon_team_img">
+            </div>
+        </div>
+        <div class="url" type="hidden" value="{% static '/img/types/'%}">
+        </div>
+    </template>
+    <div class="flash">
+      </div>
+    <script src={% static '/js/my_teams.js' %}></script>
     {% endblock content %}
 </body>
 </html>

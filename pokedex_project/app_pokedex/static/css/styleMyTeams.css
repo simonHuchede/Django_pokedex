@@ -1,0 +1,116 @@
+.container{
+    max-width: 90%;
+    height: 770px;
+}
+.dropdownContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.dropdown{
+    position: relative;
+    width: 300px;
+    height: 50px;
+}
+.dropdown input{
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+} 
+.dropdown::before {
+    content: '';
+    position : absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid black;
+    z-index: 100000;
+    right: 20px;
+    top: 15px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(-45deg);
+    transition: .5s;
+    pointer-events: none;
+}
+.dropdown.active::before{
+    transform: rotate(-225deg);
+    top : 22px
+}
+.dropdown .option div{
+    padding: 12px 20px;
+    background: whitesmoke;
+    transition: .5s;
+}
+.dropdown .option div:hover{
+    background: aqua;
+    transition:  ease-in-out .5s;
+}
+.dropdown .option
+{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    overflow : scroll;
+    overflow-x: hidden;
+    display: none;
+    max-height: 300px;
+}
+.dropdown.active .option{
+    display: block;
+}
+.dropdown .option::-webkit-scrollbar{
+    width: 10px;
+    background-color: white;
+}
+.dropdown .option::-webkit-scrollbar-thumb{
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+    border: 1px solid #000;
+}
+.buildTeam{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card_pokemon_team .card_pokemon_team_img img{
+    width: 100px;
+    height: 80px;
+}
+.flash {
+    position: fixed;
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    padding: 40px;
+    
+    background-color: red;
+    color: white;
+    text-align: center;
+    
+    transform: translateY(100%);
+  }
+  
+  .flash-is-showing {
+    animation: popup 3s 1;
+  }
+  
+  @keyframes popup {
+    0% { transform: translateY(100%); }
+    10% { transform: translateY(0); }
+    90% { transform: translateY(0); }
+    99% { transform: translateY(100%); }
+  }
+  .card_pokemon_team{
+    width: 33%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
