@@ -19,7 +19,7 @@
         <div class="container-header">
             <nav class="navbar">
                 <div class="header-logo">
-                    <img  class="logo" src="{% static '/img/pokedex_icon.svg' %}" alt="logo"  >
+                    <a href="/"><img  class="logo" src="{% static '/img/pokedex_icon.svg' %}" alt="logo"  ></a>
                 </div>
                 <ul class="nav-list row">
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="card-body row-center">
-                    <div class="stats" style="position: relative; height:40vh; width:80vw">
+                    <div class="stats" >
                         <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
                     <div class="abilities column">
