@@ -36,18 +36,181 @@
                     <svg onclick="deletePokemon(this)"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
                     </svg>
                 </span>
-                {% comment %}
-	            <div class="card-type"></div>
-                {% endcomment %}
             </div>
             <div class="card_pokemon_team_img">
             </div>
-        </div>
-        <div class="url" type="hidden" value="{% static '/img/types/'%}">
+            <div class="types_div">
+
+            </div>
+            <div class="stats"style="position: relative; height:250px; width:300px">
+                <canvas id="canvasStats"></canvas>
+            </div>
         </div>
     </template>
     <div class="flash">
       </div>
+      <script>
+        // Le js a été mis dans le dom pour utiliser le static tag (qui ne fonctionnait pas dans un autre fichier js)
+        const dropdown = document.querySelector('.dropdown')
+        // event listener to toggle active class 
+        dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('active')
+})
+/**
+* set the text selected in the query 
+*/
+function setText(value) {
+    document.querySelector('.textBox').value = value
+}
+const input = document.querySelector('.textBox')
+/**
+* add event listener on the input search to sort the select items with query
+*/
+input.addEventListener('keyup', (e)=> {
+    const value = input.value.toUpperCase();
+    const opt = document.querySelectorAll('.item')
+    for( i = 0; i < opt.length; i++){
+        let txtValue = opt[i].textContent || opt[i].innerText;
+        if (txtValue.toUpperCase().indexOf(value)> -1){
+            opt[i].style.display = "";
+        }else{
+            opt[i].style.display = "none"
+        }
+    }
+})
+// Add a event listener to all items in the select
+// When an item is clicked there is a request on the precise pokemon to get more informations
+// all the data is send on the dom with a template who's cloned
+document.querySelectorAll('.item').forEach((item) => {
+    item.addEventListener('click',() => {
+        if(document.querySelector('.buildTeam').childElementCount >= 3){
+            let flash = document.querySelector('.flash');
+            flash.classList.add('flash-is-showing');
+            flash.textContent = "You only can have 3 pokemons in your team !"
+            return;
+        }else{
+            fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)
+       .then(res => res.json())
+       .then(
+        res => {
+            let template = document.getElementById('template_card')
+            let clone = template.content.cloneNode(true)
+            let card_img = clone.querySelector('.card_pokemon_team_img')
+            let div = clone.querySelector('.card_pokemon_team')
+            let img = document.createElement('img')
+            let svg = clone.querySelector('svg')
+            let canvas = clone.querySelector('#canvasStats')
+            let typeDiv = clone.querySelector('.types_div')
+            if(res.types.length >= 1){
+                for(i=0; i< res.types.length; i++){
+                    let div = document.createElement('div')
+                    let type = res.types[i].type.name
+                    let img = document.createElement('img')
+                    let span = document.createElement('span')
+                    img.src = `{% static '/img/types/' %}${type}.svg`
+                    img.classList.add('svg-type')
+                    div.classList.add("card-type")
+                    div.classList.add(type)
+                    typeDiv.classList.add()
+                    img.alt = "type_pokemon"
+                    span.textContent = type
+                    div.appendChild(img)
+                    div.appendChild(span)
+                    typeDiv.appendChild(div)    
+                }
+            }
+            svg.value = item.textContent
+            let spanTitle = clone.querySelector('#pokemon_name')
+            div.classList.add(item.textContent)
+            img.src = res.sprites.other.dream_world.front_default ?res.sprites.other.dream_world.front_default : res.sprites.other.home.front_default
+            card_img.append(img)
+            spanTitle.textContent = item.textContent
+            getStats(res.stats,canvas) 
+            document.querySelector('.buildTeam').appendChild(clone)
+            })
+        }
+    })
+})
+/**
+* remove the pokemon via this
+*/
+function deletePokemon(any){
+    document.querySelector('.'+any.value).remove()
+}
+
+/*
+* add a flash message 
+*/
+document.querySelector('.flash').addEventListener('animationend', function(){
+    document.querySelector('.flash').classList.remove('flash-is-showing');
+  })
+
+  /*
+  * function that return a builded canvas  from chartJs 
+  * provide an array of raw stats 
+  */
+  function getStats(statsRaw, div) {
+    const stats = {
+        'hp' : statsRaw[0].base_stat,
+        'atq' : statsRaw[1].base_stat,
+        'def' : statsRaw[2].base_stat,
+        'atqSpe' : statsRaw[3].base_stat,
+        'defSpe' : statsRaw[4].base_stat,
+        'speed' : statsRaw[5].base_stat
+    }
+    const labels = [
+    'HP',
+    'Attack',
+    'Defense',
+    'Attack special',
+    'Defense special',
+    'Speed']
+  const data = {
+    labels : labels,
+    datasets : [{
+        backgroundColor : [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(55, 429, 501)',
+            'rgb(24, 62, 25)',
+            'rgb(55, 429, 501)',
+        ],
+        borderColor : 'rgb(255,99,132)',
+        data : [stats.hp,
+            stats.atq,
+            stats.def,
+            stats.atqSpe,
+            stats.defSpe,
+            stats.speed,
+        ],
+        maxBarThickness: 15
+    }
+    ]
+}
+const config = {
+    type : 'bar',
+    data : data,
+    options : {
+        responsive : true,
+        labels : false,
+        plugins : {
+            legend : {
+                display : false,
+                },
+            
+        },
+        scales : {
+            y : {
+                beginAtZero: true
+            }
+        }
+    }
+}
+const chart = new Chart(div,config);
+  }
+
+      </script>
     <script src={% static '/js/my_teams.js' %}></script>
     {% endblock content %}
 </body>

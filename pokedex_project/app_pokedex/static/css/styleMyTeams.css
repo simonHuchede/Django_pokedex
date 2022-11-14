@@ -62,6 +62,7 @@
 }
 .dropdown.active .option{
     display: block;
+    z-index: 20000;
 }
 .dropdown .option::-webkit-scrollbar{
     width: 10px;
@@ -79,8 +80,12 @@
     justify-content: center;
 }
 .card_pokemon_team .card_pokemon_team_img img{
-    width: 100px;
-    height: 80px;
+    max-width: 200px;
+    height: 100px;
+}
+.card_pokemon_team_name{
+    display: flex;  
+    align-items: center;
 }
 .flash {
     position: fixed;
@@ -108,9 +113,26 @@
   }
   .card_pokemon_team{
     width: 33%;
-    height: 100px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
+  .types_div{
+    display: flex;
+  }
+
+.card-type{
+    width: 150px;
+    padding: 5px;
+    margin-right: 5px;
+}
+.card_pokemon_team_name{
+    font-size: 20px;
+}
+.card_pokemon_team span svg {
+    padding-top: 6px;
+}
+.card_pokemon_team span svg path {
+    fill:red
+}
