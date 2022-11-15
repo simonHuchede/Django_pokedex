@@ -198,7 +198,7 @@ input:checked + .slider:before {
     left: 50%;
     height: 2px;
     width: 0;
-    background : var(--navFont);
+    background : var(--bigFont);
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 .nav-link:hover::after{
