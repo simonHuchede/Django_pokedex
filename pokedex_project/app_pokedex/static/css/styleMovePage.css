@@ -6,13 +6,17 @@ table{
     border-collapse: collapse;
 }
 th{
-    padding: 15px 35px 15px 0;
+    padding: 15px 35px 15px 35px;
     margin-right: 10%;
     background-color: var(--headerTab);
+    text-align: center;
 }
 td{
     background-color: var(--bg_container);
 }
 td:not(tbody:first-child), td:not(.move1){
     border-top : solid 1px var(--minFont)
+}
+.row_table{
+    text-align: center  ;
 }
