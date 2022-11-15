@@ -1,3 +1,4 @@
+
 const stats = {
     'hp' : document.getElementById('hp').value,
     'atq' : document.getElementById('atq').value,
@@ -26,6 +27,7 @@ const data = {
             'rgb(55, 429, 501)',
         ],
         borderColor : 'rgb(255,99,132)',
+        color : '#fffff',
         data : [stats.hp,
             stats.atq,
             stats.def,
@@ -45,12 +47,23 @@ const config = {
             legend : {
                 display : false,
             }
+        },
+        scales : {
+            x : {
+                ticks : {
+                    color : document.body.classList.contains('light-theme') ? "rgb(0, 0, 0)" : "hsl(0, 0%, 100%)"
+                }
+            },
+            y : {
+                ticks : {
+                    color : document.body.classList.contains('light-theme') ? "rgb(0, 0, 0)" : "hsl(0, 0%, 100%)"
+                }
+            }
         }
     }
 }
 
 const chart = new Chart(document.getElementById('myChart'),config);
-
 function submitForm(arrow) {
     let form = document.getElementById('formArrow')
     let input = document.getElementById('input_form')
