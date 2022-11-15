@@ -1,4 +1,4 @@
-
+// get Pokemon stats on hidden divs
 const stats = {
     'hp' : document.getElementById('hp').value,
     'atq' : document.getElementById('atq').value,
@@ -37,6 +37,7 @@ const data = {
         ]
     }]
 }
+// Create an object to fully personalize it
 const config = {
     type : 'bar',
     data : data,
@@ -63,10 +64,5 @@ const config = {
     }
 }
 
+// Create instance of my Bar Chart !
 const chart = new Chart(document.getElementById('myChart'),config);
-function submitForm(arrow) {
-    let form = document.getElementById('formArrow')
-    let input = document.getElementById('input_form')
-    let inputPkm = document.getElementById('input_pkm_id')
-    form.submit()
-}

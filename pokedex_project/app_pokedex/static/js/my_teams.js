@@ -1,6 +1,8 @@
 /**
-* remove the pokemon via this
-*/
+ * Simple procedure to delete each childs and the parent who's sended in parameter
+ * @param  {[HTMLElement]} args [Give HTML Element who want's to be delete him & his childs]
+ * @return {[void]}
+ */
 function deletePokemon(any){
     document.querySelector('.'+any.value).remove()
 }
@@ -12,10 +14,12 @@ document.querySelector('.flash').addEventListener('animationend', function(){
     document.querySelector('.flash').classList.remove('flash-is-showing');
 })
 
-/*
-* function that return a builded canvas  from chartJs 
-* provide an array of raw stats 
-*/
+/**
+ * Build a chart with a static configuration to have the same Charts
+ * @param  {[JSON]} stats Raw stats from PokeApi
+ * @param  {[HTMLElement]} parentDiv Parent div to append the chart 
+ * @return {[void]}
+ */
 function getStats(statsRaw, div) {
     const stats = {
         'hp' : statsRaw[0].base_stat,
