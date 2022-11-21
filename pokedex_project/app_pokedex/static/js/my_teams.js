@@ -45,7 +45,7 @@ function getStats(statsRaw, div) {
             'rgb(255, 205, 86)',
             'rgb(55, 429, 501)',
             'rgb(24, 62, 25)',
-            'rgb(55, 429, 501)',
+            'rgb(50, 168, 82)',
         ],
         borderColor : 'rgb(255,99,132)',
         data : [stats.hp,

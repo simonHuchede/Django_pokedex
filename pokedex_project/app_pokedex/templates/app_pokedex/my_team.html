@@ -43,7 +43,7 @@
             <div class="types_div">
 
             </div>
-            <div class="stats"style="position: relative; height:250px; width:300px">
+            <div class="stats"style="position: relative; width:300px">
                 <canvas id="canvasStats"></canvas>
             </div>
         </div>
@@ -84,10 +84,10 @@ input.addEventListener('keyup', (e)=> {
 // all the data is send on the dom with a template who's cloned
 document.querySelectorAll('.item').forEach((item) => {
     item.addEventListener('click',() => {
-        if(document.querySelector('.buildTeam').childElementCount >= 3){
+        if(document.querySelector('.buildTeam').childElementCount >= 5){
             let flash = document.querySelector('.flash');
             flash.classList.add('flash-is-showing');
-            flash.textContent = "You only can have 3 pokemons in your team !"
+            flash.textContent = "You only can have 5 pokemons in your team !"
             return;
         }else{
             fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)

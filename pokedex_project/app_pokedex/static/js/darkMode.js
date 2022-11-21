@@ -6,8 +6,12 @@ const checkboxTrigger = document.querySelector('.trigger_checkbox')
 
 // darkMode verify localStorage to set mode
 switch(localStorage.getItem('mode')){
-    case 'light' : light();break;
-    case 'dark' : dark();break;
+    case 'light' : light();
+    checkboxTrigger.checked = false;
+    break;
+    case 'dark' : dark();
+    checkboxTrigger.checked = true;
+    break;
     default : light();break;
 }
 
@@ -46,7 +50,6 @@ function dark(){
     body.classList.remove('light-theme')
     iconDark.style = "display : block";
     iconLight.style= "display : none";
-    checkboxTrigger.checked = true;
     if(chart){
         chart.options.scales.x.ticks.color = "white"
         chart.options.scales.y.ticks.color = "white"
