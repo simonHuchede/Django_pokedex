@@ -31,8 +31,14 @@ def index(request):
             result['sprites']['other']['dream_world']['front_default'],
             stats
             )
+        result = cache.get('listPokemon')
+        if not result : 
+            result = req.get('https://pokeapi.co/api/v2/pokemon/?limit=1151').json()['results']
+            cache.set('listPokemon', result)
+             
         context={
             'pokemon': pokemon,
+            'pokemonList' : result
         }
 
     return render(request,"app_pokedex/index.html",context)     
@@ -42,9 +48,10 @@ def my_team(request) :
     if not result : 
         result = req.get('https://pokeapi.co/api/v2/pokemon/?limit=1151').json()['results']
         cache.set('listPokemon', result)
-    context = {
-        "pokemonList" : result
-    } 
+             
+        context={
+            'pokemonList' : result
+        }
     return render(request,"app_pokedex/my_team.html",context)
 
 def moves(request, pokemon_id) :

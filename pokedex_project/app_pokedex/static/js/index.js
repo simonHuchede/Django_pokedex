@@ -66,3 +66,23 @@ const config = {
 
 // Create instance of my Bar Chart !
 const chart = new Chart(document.getElementById('myChart'),config);
+const input = document.querySelector('#input_search')
+/**
+* add event listener on the input search to sort the select items with query
+*/
+input.addEventListener('keyup', (e)=> {
+    const value = input.value.toUpperCase();
+    const opt = document.querySelectorAll('.option')
+    if(value.length >= 4){
+        for( i = 0; i < opt.length; i++){
+            let txtValue = opt[i].textContent || opt[i].innerText;
+            document.querySelector('.results').classList.add('active')
+            if (txtValue.toUpperCase().indexOf(value)> -1){
+                opt[i].style.display = "";
+            }else{
+                opt[i].style.display = "none"
+            }
+        }
+    }
+    
+})

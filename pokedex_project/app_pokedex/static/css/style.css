@@ -248,3 +248,14 @@ li{
 label{
     color: var(--bigFont);
 }
+.header-logo{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.results{
+    display: none;
+}
+.active{
+    display: block;
+}
