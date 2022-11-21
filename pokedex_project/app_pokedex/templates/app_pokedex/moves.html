@@ -16,28 +16,28 @@
 </head>
 <body>
     {% block content %}
-    <h1>Mxoves of {{pokemon.name}} : </h1>
+    <h1>Moves of {{pokemon.name}} : </h1>
     <div class="container-table">
         <table class="table-moves">
-            <th class="move_name_h">
+            <th class="move_name_h bigText">
                 Name
             </th>
-            <th class="move_type_h">
+            <th class="move_type_h bigText">
                 Type
             </th>
-            <th class="move_power_h">
+            <th class="move_power_h bigText">
                 Power
             </th>
-            <th class="move_accuracy_h">
+            <th class="move_accuracy_h bigText">
                 Accuracy
             </th>
-            <th class="move_pp_h">
+            <th class="move_pp_h bigText">
                 PP
             </th>
             {% for move in movesList %}
         <tr class="row_table move{{forloop.counter}}">
-            <td class="move_name">
-                {{move.name}}
+            <td class="move_name bigText">
+                {{move.name|capfirst}}
             </td>
             <td class="move_type">
                 <div class="card-type {{move.type.name}}"title="{{move.type.name}}">
@@ -45,20 +45,20 @@
                     <span class="">{{move.type.name|capfirst}}</span>
                 </div>
             </td>
-            <td class="move_power">
+            <td class="move_power bigText">
                 {{move.power}}
             </td>
-            <td class="move_accuracy">
+            <td class="move_accuracy bigText">
                 {{move.accuracy}}
             </td>
-            <td class="move_pp">
+            <td class="move_pp bigText">
                 {{move.pp}}
             </td>
         </tr>
     {% endfor %}
         </table>
     </div>
-    
+    <script>const chart = false;</script>
     {% endblock content %}
 </body>
 </html>

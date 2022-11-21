@@ -21,6 +21,7 @@
     height: 100%;
     cursor: pointer;
     border: none;
+    border-radius: 15px;
 } 
 .dropdown::before {
     content: '';
@@ -52,9 +53,10 @@
 }
 .dropdown .option
 {
+    border-radius: 15px;
     position: absolute;
-    top: 50px;
-    width: 100%;
+    top: 45px;
+    width: 100%;    
     overflow : scroll;
     overflow-x: hidden;
     display: none;
@@ -65,6 +67,8 @@
     z-index: 20000;
 }
 .dropdown .option::-webkit-scrollbar{
+    display: none;
+    border-radius: 15px;
     width: 10px;
     background-color: white;
 }
