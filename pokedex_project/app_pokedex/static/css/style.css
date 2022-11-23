@@ -8,6 +8,7 @@
     --minFont : hsl(228, 12%, 44%);
     --toggle : hsl(230, 22%, 74%);
     --navFont : hsl(232, 19%, 15%);
+    --inputSearch : rgb(174, 179, 189);
     --headerTab : orange;
     transition: ease-in .5s; 
 }
@@ -24,6 +25,7 @@
     --minFont : hsl(228, 34%, 66%);
     --toggle : linear-gradient(hsl(210, 78%, 56%),hsl(146, 68%, 55%));
     --headerTab : orange;
+    --inputSearch :white;   
     transition: ease-in .5s;
 }
 .bigText{
@@ -116,6 +118,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 440px;
+    max-width: 440px;
+    height: 280px;
+    max-height: 280px;
 }
 .card-img > img {
     width: 300px;
@@ -255,7 +261,37 @@ label{
 }
 .results{
     display: none;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+}
+.search_pokemon{
+    position: relative;
+}
+.search_pokemon > input{
+    width: 200px;
+    height: 40px;
+    background-color: var(--inputSearch);
+}
+.search_pokemon > input::placeholder{
+    color : var(--bigFont);
 }
 .active{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.search_pokemon .active .option{
+    background-color: var(--inputSearch);
+    padding: 2px;
+    text-decoration: none;
+    color: var(--bigFont);
+    transition: ease-in-out .5s;
+    border-bottom: 1px solid black;
+    
+}
+.search_pokemon .active .option:hover{
+    background-color:;
+    color: white;
 }
