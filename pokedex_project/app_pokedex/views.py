@@ -33,7 +33,7 @@ def index(request):
             )
         result = cache.get('listPokemon')
         if not result : 
-            result = req.get('https://pokeapi.co/api/v2/pokemon/?limit=1151').json()['results']
+            result = req.get('https://pokeapi.co/api/v2/pokemon/?limit=905').json()['results']
             cache.set('listPokemon', result)
              
         context={
@@ -45,13 +45,9 @@ def index(request):
 def my_team(request) :
     #Store in the cache to avoid big requests permanently 
     result = cache.get('listPokemon')
-    if not result : 
-        result = req.get('https://pokeapi.co/api/v2/pokemon/?limit=1151').json()['results']
-        cache.set('listPokemon', result)
-             
-        context={
-            'pokemonList' : result
-        }
+    context={
+        'pokemonList' : result
+    }
     return render(request,"app_pokedex/my_team.html",context)
 
 def moves(request, pokemon_id) :
