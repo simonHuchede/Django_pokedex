@@ -128,9 +128,8 @@ document.querySelectorAll('.item').forEach((item) => {
             img.src = pokemon.sprites.other.dream_world.front_default ?pokemon.sprites.other.dream_world.front_default : pokemon.sprites.other.home.front_default
             card_img.append(img)
             spanTitle.textContent = item.textContent
-            getStats(res.stats,canvas) 
-            // add the cloned template at the parent buildTeam
             getStats(pokemon.stats,canvas) 
+            // add the cloned template at the parent buildTeam
             document.querySelector('.buildTeam').appendChild(clone)
             })
         }

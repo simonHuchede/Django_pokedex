@@ -119,9 +119,6 @@ body{
     flex-direction: column;
     align-items: center;
     width: 440px;
-    max-width: 440px;
-    height: 280px;
-    max-height: 280px;
 }
 .card-img > img {
     width: 300px;
@@ -281,17 +278,4 @@ label{
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
-}
-.search_pokemon .active .option{
-    background-color: var(--inputSearch);
-    padding: 2px;
-    text-decoration: none;
-    color: var(--bigFont);
-    transition: ease-in-out .5s;
-    border-bottom: 1px solid black;
-    
-}
-.search_pokemon .active .option:hover{
-    background-color:;
-    color: white;
 }

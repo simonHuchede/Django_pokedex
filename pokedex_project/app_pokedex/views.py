@@ -64,7 +64,7 @@ def moves(request, pokemon_id) :
     movesListJson = res['moves']
     movesList = []
     for i in range(15) :
-        resMove = req.get(movesListJson[i]['move']['url']).json()
+        resMove = sorted(req.get(movesListJson[i]['move']['url']).json(), key=lambda move: move["name"])
         movesList.append(resMove)      
     context = {
         "pokemon" : pokemon,

@@ -60,7 +60,7 @@ function getStats(statsRaw, div) {
     ]
     }
     const config = {
-    type : 'bar',
+    type : 'bar', 
     data : data,
     options : {
         responsive : true,
