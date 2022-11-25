@@ -63,11 +63,16 @@ def moves(request, pokemon_id) :
             )
     movesListJson = res['moves']
     movesList = []
-    for i in range(15) :
-        resMove = sorted(req.get(movesListJson[i]['move']['url']).json(), key=lambda move: move["name"])
-        movesList.append(resMove)      
+    if(len(movesListJson) < 15) :
+        for i in range(len(movesListJson)) :
+            resMove = req.get(movesListJson[i]['move']['url']).json()
+            movesList.append(resMove)
+    else : 
+        for i in range(15) :
+            resMove = req.get(movesListJson[i]['move']['url']).json()
+            movesList.append(resMove)
     context = {
         "pokemon" : pokemon,
-        "movesList" : movesList
+        "movesList" : sorted(movesList, key=lambda k: k['name'])
     }
     return render(request, 'app_pokedex/moves.html', context)
