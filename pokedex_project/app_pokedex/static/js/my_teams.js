@@ -18,7 +18,7 @@ document.querySelector('.flash').addEventListener('animationend', function(){
  * Build a chart with a static configuration to have the same Charts
  * @param  {[JSON]} stats Raw stats from PokeApi
  * @param  {[HTMLElement]} parentDiv Parent div to append the chart 
- * @return {[void]}
+ * @return {[Chart]} Object chart from ChartJS
  */
 function getStats(statsRaw, div) {
     const stats = {
@@ -36,6 +36,7 @@ function getStats(statsRaw, div) {
     'Attack special',
     'Defense special',
     'Speed']
+    
     const data = {
     labels : labels,
     datasets : [{
@@ -78,5 +79,5 @@ function getStats(statsRaw, div) {
         }
     }
     }
-    const chart = new Chart(div,config);
+    return new Chart(div,config);
 }

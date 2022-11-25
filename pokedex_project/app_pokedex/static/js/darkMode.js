@@ -33,10 +33,12 @@ function light(){
     body.classList.remove('dark-theme')
     iconDark.style = "display : none";
     iconLight.style= "display : block";
-    if(chart){
-        chart.options.scales.x.ticks.color = "black"
-        chart.options.scales.y.ticks.color = "black"
-        chart.update()
+    if(charts){
+        charts.forEach((chart) => {
+            chart.options.scales.x.ticks.color = "black"
+            chart.options.scales.y.ticks.color = "black"
+            chart.update()
+        })
     }
     localStorage.setItem('mode','light')
 
@@ -50,10 +52,12 @@ function dark(){
     body.classList.remove('light-theme')
     iconDark.style = "display : block";
     iconLight.style= "display : none";
-    if(chart){
-        chart.options.scales.x.ticks.color = "white"
-        chart.options.scales.y.ticks.color = "white"
-        chart.update()
+    if(charts){
+        charts.forEach((chart) => {
+            chart.options.scales.x.ticks.color = "white"
+            chart.options.scales.y.ticks.color = "white"
+            chart.update()
+        })
     }
     localStorage.setItem('mode','dark')
 

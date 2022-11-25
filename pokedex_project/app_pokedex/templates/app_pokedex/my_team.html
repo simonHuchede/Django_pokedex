@@ -20,14 +20,13 @@
                 <input type="text" class="textBox" placeholder="Pokemons list">
                 <div class="option">
                     {% for pokemon in pokemonList %}
-                     <div class="item" onclick="setText('{{pokemon.name|capfirst}}')">{{pokemon.name|capfirst}}</div>   
+                    <div class="item" onclick="setText('{{pokemon.name|capfirst}}')">{{pokemon.name|capfirst}}</div>   
                     {% endfor %}
                 </div>
             </div>
         </div>
         <div class="buildTeam">
         </div>
-        
     </div>
     <template id="template_card">
         <div class="card_pokemon_team">
@@ -59,18 +58,18 @@
         dropdown.addEventListener('click', () => {
             dropdown.classList.toggle('active')
 })
+const charts = []
 /**
 * set the text selected in the query 
 */
 function setText(value) {
     document.querySelector('.textBox').value = value
 }
-const input = document.querySelector('.textBox')
 /**
 * add event listener on the input search to sort the select items with query
 */
-input.addEventListener('keyup', (e)=> {
-    const value = input.value.toUpperCase();
+document.querySelector('.textBox').addEventListener('keyup', (e)=> {
+    const value = document.querySelector('.textBox').value.toUpperCase();
     const opt = document.querySelectorAll('.item')
     for( i = 0; i < opt.length; i++){
         let txtValue = opt[i].textContent || opt[i].innerText;
@@ -86,13 +85,22 @@ input.addEventListener('keyup', (e)=> {
 // all the data is send on the dom with a template who's cloned
 document.querySelectorAll('.item').forEach((item) => {
     item.addEventListener('click',() => {
+        const flash = document.querySelector('.flash');
         if(document.querySelector('.buildTeam').childElementCount >= 5){
-            let flash = document.querySelector('.flash');
             flash.classList.add('flash-is-showing');
-            flash.textContent = "You only can have 5 pokemons in your team !"
+            flash.textContent = "5 Pokemons are allowed !"
             return;
-        }else{
-            fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)
+        }
+        if(document.querySelector('.buildTeam').childElementCount > 0){
+            for( let child of document.querySelector('.buildTeam').children){
+                if(child.classList.contains(item.textContent)){
+                    flash.classList.add('flash-is-showing');
+                    flash.textContent = "You already have this Pokemon"
+                    return;
+                }
+            }
+        }
+        fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)
        .then(res => res.json())
        .then(
         pokemon => {
@@ -114,7 +122,6 @@ document.querySelectorAll('.item').forEach((item) => {
                     img.classList.add('svg-type')
                     div.classList.add("card-type")
                     div.classList.add(type)
-                    typeDiv.classList.add()
                     img.alt = "type_pokemon"
                     span.textContent = type
                     div.appendChild(img)
@@ -125,14 +132,22 @@ document.querySelectorAll('.item').forEach((item) => {
             svg.value = item.textContent
             let spanTitle = clone.querySelector('#pokemon_name')
             div.classList.add(item.textContent)
-            img.src = pokemon.sprites.other.dream_world.front_default ?pokemon.sprites.other.dream_world.front_default : pokemon.sprites.other.home.front_default
+            img.src = pokemon.sprites.other.dream_world.front_default ? pokemon.sprites.other.dream_world.front_default : pokemon.sprites.other.home.front_default
             card_img.append(img)
             spanTitle.textContent = item.textContent
-            getStats(pokemon.stats,canvas) 
+            charts.push(getStats(pokemon.stats,canvas))
+            switch(localStorage.getItem('mode')){
+                case 'light' : light();
+                checkboxTrigger.checked = false;
+                break;
+                case 'dark' : dark();
+                checkboxTrigger.checked = true;
+                break;
+                default : light();break;
+            }
             // add the cloned template at the parent buildTeam
             document.querySelector('.buildTeam').appendChild(clone)
             })
-        }
     })
 })
 /**

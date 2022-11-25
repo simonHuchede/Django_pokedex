@@ -65,7 +65,8 @@ const config = {
 }
 
 // Create instance of my Bar Chart !
-const chart = new Chart(document.getElementById('myChart'),config);
+const charts = []
+charts.push(new Chart(document.getElementById('myChart'),config))
 const input = document.querySelector('#input_search')
 /**
 * add event listener on the input search to sort the select items with query
