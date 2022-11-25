@@ -57,8 +57,7 @@ function getStats(statsRaw, div) {
             stats.speed,
         ],
         maxBarThickness: 15
-    }
-    ]
+    }]
     }
     const config = {
     type : 'bar', 

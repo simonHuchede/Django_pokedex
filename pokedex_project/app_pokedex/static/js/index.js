@@ -42,7 +42,7 @@ const config = {
     type : 'bar',
     data : data,
     options : {
-        responsive : false,
+        responsive : true,
         maintainAspectRatio : false,
         plugins : {
             legend : {
