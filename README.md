@@ -66,8 +66,8 @@ Please make sure to update tests as appropriate.
 
 ## Technical choices
 
-We decided to limit the maximum number of pokemons returned in the basic api request from 1151 to 905 because of pokemons not referenced in the api. This request is directly stored in Django’s cache to make it easier for the user to navigate.
+- We decided to limit the maximum number of pokemons returned in the basic api request from 1151 to 905 because of pokemons not referenced in the api. This request is directly stored in Django’s cache to make it easier for the user to navigate.
 
-- To display the characteristics we've chosen a graph via the ChartJs library to make easier the reading for the user.
+- To display the characteristics we've chosen a graph via the [ChartJS](https://www.chartjs.org/)library to make easier the reading for the user.
 
 - We preferred to use Javascript for team management rather than having to create a database to store the user teams, which would have had the impact of having to create an account for the user. We wanted above all to keep a simple way to use the app.
