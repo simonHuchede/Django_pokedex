@@ -13,96 +13,98 @@
 </head>
 <body>
     {% block content %}
-    <br>
-    <div>
-        <h1 class="bigText" style="text-align : center;">User Manual</h1>
-    </div>
+    <div class="container">
+        <div>
+            <h1 class="bigText" style="text-align : center;">User Manual</h1>
+        </div>
+            <br>
+            <br>
+        <div>
+            <h1 class="bigText">Home page :</h1>
+        </div>
+            <br>
+        <p class="bigText">
+            Find your Pokemon and get access to it specifications.<br>
+            Browse Pokemon list.<br>
+            Get access to detailed moves.<br>
+            <br>
+        </p>
+        <div>
+            <h4 style="color: #731768;"> Home links : </h4>
+                <img src="{% static '/img/pokedex_icon.svg'%}" alt="Home_logo.jpg">
+                <p class="bigText">Click to go Home page.</p>
+        </div>
+            <br>
+        <div>
+            <h4 style="color: #731768;"> Search bar :</h4>
+                <img src="{% static '/img/Search.jpg'%}" alt="Seach_bar.jpg">
+                <p class="bigText">Enter Pokemon name to find it.</p>
+        </div>
+            <br>
+        <div>
+            <h4 style="color: #731768;"> My Teams link :</h4>
+                <img src="{% static '/img/My_teams.jpg'%}" alt="My_teams.jpg">
+                <p class="bigText">Click to access to your teams.</p>
+        </div>
+            <br>
+        <div>
+            <h4 style="color: #731768;"> Light / Dark mode toggle :</h4>
+                <img src="{% static '/img/Light_toggle.jpg'%}" alt="Light_toggle.jpg">
+                <img src="{% static '/img/Dark_toggle.jpg'%}" alt="Dark_toggle.jpg">
+                <p class="bigText">Click to toggle Light or Dark mode.</p>
+        </div>
+             <br>
+        <div>
+            <h4 style="color: #731768;"> Previous / Next button :</h4>
+                <img src="{% static '/img/Left_arrow.jpg'%}" alt="Left_arrow.jpg">
+                <img src="{% static '/img/Right_arrow.jpg'%}" alt="Right_arrow.jpg">
+                <p class="bigText">Click to switch to previous / next Pokemon.</p>
+        </div>
+       <br>
+        <div>
+            <h4 style="color: #731768;"> Previous / Next button :</h4>
+                <img src="{% static '/img/Show_differents_move.JPG'%}" alt="Show_differents_move.jpg">
+                <p class="bigText">Click to show current Pokemon moves.</p>
+        </div>
+        <br>
+        <div>
+            <h4 style="color: #731768;"> Detailled specifications :</h4>
+                <img src="{% static '/img/Detailed_specs.JPG'%}" alt="Detailed_specs.jpg">
+                <p class="bigText">Move over the mouse to see detailled specs.</p>
+        </div>
         <br>
         <br>
-    <div>
-        <h1 class="bigText">Home page :</h1>
-    </div>
         <br>
-    <p class="bigText">
-        Find your Pokemon and get access to it specifications.<br>
-        Browse Pokemon list.<br>
-        Get access to detailed moves.<br>
+        <div>
+            <h1 class="bigText">My teams page :</h1>
+        </div>
         <br>
-    </p>
-    <div>
-        <h4 style="color: #731768;"> Home links : </h4>
-            <img src="{% static '/img/pokedex_icon.svg'%}" alt="Home_logo.jpg">
-            <p class="bigText">Click to go Home page.</p>
-    </div>
+        <p class="bigText">
+            Find your Pokemon and get access to it specifications.<br>
+            Create your Pokemon teams.<br>
+            Five Pokemon allowed per team.<br>
+            Unlimited number of teams.<br>
+        </p>
         <br>
-    <div>
-        <h4 style="color: #731768;"> Search bar :</h4>
-            <img src="{% static '/img/Search.jpg'%}" alt="Seach_bar.jpg">
-            <p class="bigText">Enter Pokemon name to find it.</p>
-    </div>
+        <div>
+            <h4 style="color: #731768;"> Add team :</h4>
+                <img src="{% static '/img/Add-team.JPG'%}" alt="Add-team.jpg">
+                <p class="bigText">Add a team.</p>
+        </div>
         <br>
-    <div>
-        <h4 style="color: #731768;"> My Teams link :</h4>
-            <img src="{% static '/img/My_teams.jpg'%}" alt="My_teams.jpg">
-            <p class="bigText">Click to access to your teams.</p>
-    </div>
+        <div>
+            <h4 style="color: #731768;"> Pokemon list :</h4>
+                <img src="{% static '/img/Find_your_Pokemon.JPG'%}" alt="Find_your_Pokemon.jpg">
+                <p class="bigText">Search and select your Pokemon.</p>
+        </div>
         <br>
-    <div>
-        <h4 style="color: #731768;"> Light / Dark mode toggle :</h4>
-            <img src="{% static '/img/Light_toggle.jpg'%}" alt="Light_toggle.jpg">
-            <img src="{% static '/img/Dark_toggle.jpg'%}" alt="Dark_toggle.jpg">
-            <p class="bigText">Click to toggle Light or Dark mode.</p>
+        <div>
+            <h4 style="color: #731768;"> Remove Pokemon from team :</h4>
+                <img src="{% static '/img/Remove.JPG'%}" alt="Remove.jpg">
+                <p class="bigText">Click to remove the Pokemon from team.</p>
+        </div>
     </div>
-         <br>
-    <div>
-        <h4 style="color: #731768;"> Previous / Next button :</h4>
-            <img src="{% static '/img/Left_arrow.jpg'%}" alt="Left_arrow.jpg">
-            <img src="{% static '/img/Right_arrow.jpg'%}" alt="Right_arrow.jpg">
-            <p class="bigText">Click to switch to previous / next Pokemon.</p>
-    </div>
-   <br>
-    <div>
-        <h4 style="color: #731768;"> Previous / Next button :</h4>
-            <img src="{% static '/img/Show_differents_move.JPG'%}" alt="Show_differents_move.jpg">
-            <p class="bigText">Click to show current Pokemon moves.</p>
-    </div>
-    <br>
-    <div>
-        <h4 style="color: #731768;"> Detailled specifications :</h4>
-            <img src="{% static '/img/Detailed_specs.JPG'%}" alt="Detailed_specs.jpg">
-            <p class="bigText">Move over the mouse to see detailled specs.</p>
-    </div>
-    <br>
-    <br>
-    <br>
-    <div>
-        <h1 class="bigText">My teams page :</h1>
-    </div>
-    <br>
-    <p class="bigText">
-        Find your Pokemon and get access to it specifications.<br>
-        Create your Pokemon teams.<br>
-        Five Pokemon allowed per team.<br>
-        Unlimited number of teams.<br>
-    </p>
-    <br>
-    <div>
-        <h4 style="color: #731768;"> Add team :</h4>
-            <img src="{% static '/img/Add-team.JPG'%}" alt="Add-team.jpg">
-            <p class="bigText">Add a team.</p>
-    </div>
-    <br>
-    <div>
-        <h4 style="color: #731768;"> Pokemon list :</h4>
-            <img src="{% static '/img/Find_your_Pokemon.JPG'%}" alt="Find_your_Pokemon.jpg">
-            <p class="bigText">Search and select your Pokemon.</p>
-    </div>
-    <br>
-    <div>
-        <h4 style="color: #731768;"> Remove Pokemon from team :</h4>
-            <img src="{% static '/img/Remove.JPG'%}" alt="Remove.jpg">
-            <p class="bigText">Click to remove the Pokemon from team.</p>
-    </div>
+    
     <script>
         const charts = false;
     </script>
