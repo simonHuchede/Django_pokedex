@@ -129,7 +129,7 @@ function addTeam(){
     clone.querySelectorAll('.item_team'+idTeam).forEach((item) => {
         item.addEventListener('click',(e) => {
             const flash = document.querySelector('.flash');
-            if(document.querySelector('.buildTeam').childElementCount >= 5){
+            if(document.querySelector('.buildTeam_'+e.target.classList[1].slice(-1)[0]).childElementCount >= 5){
                 flash.classList.add('flash-is-showing');
                 flash.textContent = "5 Pokemons are allowed !"
                 return;

@@ -10,6 +10,7 @@
     --navFont : hsl(232, 19%, 15%);
     --headerTab : orange;
     --card_pokemon_team : hsl(0, 0%, 100%);
+    --container-team :  hsla(225, 19%, 92%, 0.823);
     transition: ease-in .5s; 
 }
 #light_icon > path{
@@ -25,7 +26,9 @@
     --minFont : hsl(228, 34%, 66%);
     --toggle : linear-gradient(hsl(210, 78%, 56%),hsl(146, 68%, 55%));
     --headerTab : orange;
-    --card_pokemon_team : hsl(229, 22%, 35%);
+    --container-team : hsl(229, 31%, 35%);
+    --card_pokemon_team:  hsl(229, 22%, 35%) ;
+   
     transition: ease-in .5s;
 }
 .bigText{

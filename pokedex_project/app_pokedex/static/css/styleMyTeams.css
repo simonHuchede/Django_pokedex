@@ -140,9 +140,15 @@
 }
 .card_pokemon_team span svg {
     padding-top: 6px;
+    transition: .5s;
+    
 }
 .card_pokemon_team span svg path {
-    fill:red
+    fill: rgb(143, 40, 65);
+    transform: scale(1.2);
+}
+.card_pokemon_team span svg:hover{
+    transform: scale(1.4);
 }
 canvas{
     width: 100% !important;
@@ -182,6 +188,7 @@ canvas{
     margin-bottom: 5%;
     display: flex;
     flex-direction: column;
+    background-color: var(--container-team);
 }
 .container-teams{
    margin: 5%;
@@ -199,4 +206,7 @@ canvas{
 }
 .btn_delete_team:hover{
     transform:scale(1.8);
+}
+svg{
+    cursor: pointer;
 }
