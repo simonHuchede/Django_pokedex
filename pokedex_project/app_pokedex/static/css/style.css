@@ -272,6 +272,7 @@ label{
 .results > a {
     z-index: 150000000;
     text-decoration: none;
+    padding: 5px;
     color: black
 }
 .results > a:visited{
