@@ -43,13 +43,13 @@ def index(request):
         }
 
     return render(request,"app_pokedex/index.html",context)     
-def my_team(request) :
+def my_teams(request) :
     #Store in the cache to avoid big requests permanently 
     result = cache.get('listPokemon')
     context={
         'pokemonList' : result
     }
-    return render(request,"app_pokedex/my_team.html",context)
+    return render(request,"app_pokedex/my_teams.html",context)
 
 def moves(request, pokemon_id) :
     urlPokemon = "https://pokeapi.co/api/v2/pokemon/"+pokemon_id
@@ -78,6 +78,6 @@ def moves(request, pokemon_id) :
     }
     return render(request, 'app_pokedex/moves.html', context)
 
-def help(request) :
+def about(request) :
 
-    return render(request,"app_pokedex/help.html")
+    return render(request,"app_pokedex/about.html")

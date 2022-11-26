@@ -7,83 +7,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheet %}
     {{block.super}}
+    <link rel="stylesheet" href="{% static '/css/help.css' %}">
     {% endblock stylesheet %}
-    <link rel="stylesheet" href="{% static '/css/help.css'%}">
-    <title>Help</title>
+    <title>About</title>
 </head>
 <body>
     {% block content %}
     <br>
     <div>
-        <h1>User Manual</h1>
+        <h1 class="bigText" style="text-align : center;">User Manual</h1>
     </div>
         <br>
         <br>
     <div>
-        <h2>Home page :</h2>
+        <h2 class="bigText">Home page :</h2>
     </div>
         <br>
     <div>
         <h4 style="color: #731768;"> Home links : </h4>
-            <img src="{% static '/img/Home_logo.jpg'%}" alt="Home_logo.jpg">
-            <img src="{% static '/img/Home_button.jpg'%}" alt="Home_button.jpg">
-            <p>Click to go to Home page.</p>
+            <img src="{% static '/img/pokedex_icon.svg'%}" alt="Home_logo.jpg">
+            <p class="bigText">Click to go Home page.</p>
     </div>
         <br>
     <div>
         <h4 style="color: #731768;"> Search bar :</h4>
             <img src="{% static '/img/Search.jpg'%}" alt="Seach_bar.jpg">
-            <p>Enter Pokemon name to find it.</p>
+            <p class="bigText">Enter Pokemon name to find it.</p>
     </div>
         <br>
     <div>
         <h4 style="color: #731768;"> My Teams link :</h4>
             <img src="{% static '/img/My_teams.jpg'%}" alt="My_teams.jpg">
-            <p>Click to access to your teams.</p>
+            <p class="bigText">Click to access to your teams.</p>
     </div>
         <br>
     <div>
         <h4 style="color: #731768;"> Light / Dark mode toggle :</h4>
             <img src="{% static '/img/Light_toggle.jpg'%}" alt="Light_toggle.jpg">
             <img src="{% static '/img/Dark_toggle.jpg'%}" alt="Dark_toggle.jpg">
-            <p>Click to toggle Light or Dark mode.</p>
+            <p class="bigText">Click to toggle Light or Dark mode.</p>
     </div>
          <br>
     <div>
         <h4 style="color: #731768;"> Previous / Next button :</h4>
             <img src="{% static '/img/Left_arrow.jpg'%}" alt="Left_arrow.jpg">
             <img src="{% static '/img/Right_arrow.jpg'%}" alt="Right_arrow.jpg">
-            <p>Click to switch to previous / next Pokemon.</p>
+            <p class="bigText">Click to switch to previous / next Pokemon.</p>
     </div>
    <br>
     <div>
         <h4 style="color: #731768;"> Previous / Next button :</h4>
             <img src="{% static '/img/Show_differents_move.JPG'%}" alt="Show_differents_move.jpg">
-            <p>Click to show current Pokemon moves.</p>
+            <p class="bigText">Click to show current Pokemon moves.</p>
     </div>
     <br>
     <div>
         <h4 style="color: #731768;"> Detailled specifications :</h4>
             <img src="{% static '/img/Detailed_specs.JPG'%}" alt="Detailed_specs.jpg">
-            <p>Move over the mouse to see detailled specs.</p>
+            <p class="bigText">Move over the mouse to see detailled specs.</p>
     </div>
     <br>
     <br>
     <div>
-        <h2>My teams page :</h2>
+        <h2 class="bigText">My teams page :</h2>
     </div>
     <br>
     <div>
         <h4 style="color: #731768;"> Pokemon list :</h4>
             <img src="{% static '/img/Find_your_Pokemon.JPG'%}" alt="Find_your_Pokemon.jpg">
-            <p>Search and select your Pokemon.</p>
+            <p class="bigText">Search and select your Pokemon.</p>
     </div>
     <br>
     <div>
         <h4 style="color: #731768;"> Remove Pokemon from team :</h4>
             <img src="{% static '/img/Remove.JPG'%}" alt="Remove.jpg">
-            <p>Click to remove the Pokemon from team.</p>
+            <p class="bigText">Click to remove the Pokemon from team.</p>
     </div>
-
+    <script>
+        const charts = false;
+    </script>
 
 {% endblock %}

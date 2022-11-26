@@ -65,6 +65,7 @@ body{
     background-color: var(--bg_container);
     max-width: 800px;
     margin: auto;
+    margin-top: 5%;
 }
 .navbar{
     display: flex;
