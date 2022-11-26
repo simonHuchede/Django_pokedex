@@ -32,7 +32,8 @@
     color: var(--bigFont);
 }
 .minText{
-    color : var(--minFont); 
+    color : var(--minFont);
+    margin-bottom: 5px;
 }
 *{
     margin: 0;
@@ -46,6 +47,7 @@ body{
 .column{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .center{
     justify-content: center;
@@ -223,6 +225,8 @@ li{
     border-radius: 10px;
     transition: all ease-in-out .5s;
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .card-moves:hover{
     transform: scale(1.07);
@@ -295,4 +299,8 @@ label{
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
+}
+.subtitle{
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
