@@ -91,7 +91,3 @@ elmts.forEach( evt =>
         
     })
     )
-
-input.addEventListener('blur', () => {
-    document.querySelector('.results').classList.remove('active')
-})

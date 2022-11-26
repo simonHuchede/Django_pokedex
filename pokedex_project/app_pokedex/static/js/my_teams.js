@@ -4,9 +4,13 @@
  * @return {[void]}
  */
 function deletePokemon(any){
+    console.log(any)
     document.querySelector('.'+any.value).remove()
 }
-
+function deleteTeam(any){
+    console.log(any)
+    document.querySelector('.team_container'+any.value).remove()
+}
 /*
 * add a flash message 
 */
@@ -79,4 +83,63 @@ function getStats(statsRaw, div) {
     }
     }
     return new Chart(div,config);
+}
+var idTeam= 0
+function addTeam(){
+    let template = document.getElementById('team')
+    let clone = template.content.cloneNode(true)
+    let dropDown = clone.querySelector('.dropdown')
+    let buildTeam = clone.querySelector('.buildTeam')
+    let textBox = clone.querySelector('.textBox')
+    let item = clone.querySelectorAll('.item')
+    let teamName = clone.querySelector('.team_name')
+    let teamDiv = clone.querySelector('.team_container')
+    idTeam++
+    item.forEach((item)=>item.classList.add('item_team'+idTeam))
+    teamDiv.classList.add('team_container'+idTeam)
+    teamDiv.value = idTeam
+    dropDown.classList.add('team_'+idTeam)
+    teamName.textContent = "Team n°"+idTeam
+    buildTeam.classList.add('buildTeam_'+idTeam)
+    textBox.classList.add('TextBox_team_'+idTeam)
+    // avoid chart bug
+    // event listener to toggle active class 
+    dropDown.addEventListener('click', () => {
+        dropDown.classList.toggle('active')
+    })
+    /**
+    * add event listener on the input search to sort the select items with query
+    */
+    clone.querySelector('.TextBox_team_'+idTeam).addEventListener('keyup', (e)=> {
+        const value = document.querySelector('.textBox').value.toUpperCase();
+        const opt = document.querySelectorAll('.item')
+        for( i = 0; i < opt.length; i++){
+            let txtValue = opt[i].textContent || opt[i].innerText;
+            if (txtValue.toUpperCase().indexOf(value)> -1){
+                opt[i].style.display = "";
+            }else{
+                opt[i].style.display = "none"
+            }
+        }
+    })
+    // Add a event listener to all items in the select
+    // When an item is clicked there is a request on the precise pokemon to get more informations
+    // all the data is send on the dom with a template who's cloned
+    clone.querySelectorAll('.item_team'+idTeam).forEach((item) => {
+        item.addEventListener('click',(e) => {
+            const flash = document.querySelector('.flash');
+            if(document.querySelector('.buildTeam').childElementCount >= 5){
+                flash.classList.add('flash-is-showing');
+                flash.textContent = "5 Pokemons are allowed !"
+                return;
+            }
+        fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)
+        .then(res => res.json())
+        .then(
+            pokemon => {
+                    buildCard(pokemon,e.target.classList[1].slice(-1)[0])
+                })
+        })
+    })
+    document.querySelector('.container-teams').appendChild(clone)
 }

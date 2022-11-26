@@ -2,13 +2,14 @@
 @import url(https://fonts.bunny.net/css?family=roboto:400,700,900);
 /* font for types*/     
 .light-theme{
-    --bg_container : hsla(228, 50%, 96%, 0.823);;
+    --bg_container : hsla(228, 50%, 96%, 0.823);
     --bg : hsl(100,0,0);
     --bigFont : rgb(0, 0, 0);
     --minFont : hsl(228, 12%, 44%);
     --toggle : hsl(230, 22%, 74%);
     --navFont : hsl(232, 19%, 15%);
     --headerTab : orange;
+    --card_pokemon_team : hsl(0, 0%, 100%);
     transition: ease-in .5s; 
 }
 #light_icon > path{
@@ -18,12 +19,13 @@
     fill: yellow;
 }
 .dark-theme{
-    --bg_container : hsl(229, 31%, 30%);;
+    --bg_container : hsl(229, 31%, 30%);
     --bg : hsl(230, 17%, 14%);
     --bigFont : hsl(0, 0%, 100%);
     --minFont : hsl(228, 34%, 66%);
     --toggle : linear-gradient(hsl(210, 78%, 56%),hsl(146, 68%, 55%));
     --headerTab : orange;
+    --card_pokemon_team : hsl(229, 22%, 35%);
     transition: ease-in .5s;
 }
 .bigText{
@@ -259,6 +261,9 @@ label{
     background-color: white;
     position: absolute;
     z-index: 1000;
+}
+.results > a {
+    z-index: 150000000;
 }
 .search_pokemon{
     position: relative;

@@ -15,17 +15,12 @@
     {% block content %}
     <div class="container">
         <h1 style="text-align : center; margin-top : 40px" class="bigText">My teams : </h1>
-        <div class="dropdownContainer">
-            <div class="dropdown">
-                <input type="text" class="textBox" placeholder="Pokemons list">
-                <div class="option">
-                    {% for pokemon in pokemonList %}
-                    <div class="item" onclick="setText('{{pokemon.name|capfirst}}')">{{pokemon.name|capfirst}}</div>   
-                    {% endfor %}
-                </div>
-            </div>
+        <div class="add_team" onclick="addTeam()">
+            <span class="btn_add_team"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
+                Add team</span>
         </div>
-        <div class="buildTeam">
+        <div class="container-teams">
+
         </div>
     </div>
     <template id="template_card">
@@ -42,9 +37,29 @@
             <div class="types_div">
 
             </div>
-            <div class="stats" style="position: relative;width : 300px;">
-                <canvas id="canvasStats" ></canvas>
+            <div class="stats"style="position: relative; width:300px">
+                <canvas id="canvasStats"></canvas>
             </div>
+        </div>
+    </template>
+    <template id="team">
+        <div class="team_container">
+            <span>
+                <svg onclick="deleteTeam(this)"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                </svg>
+            </span>
+            <h2 class="team_name"></h2>
+            <div class="dropdownContainer">
+                <div class="dropdown">
+                    <input type="text" class="textBox" placeholder="Pokemons list">
+                    <div class="option">
+                        {% for pokemon in pokemonList %}
+                        <div class="item" onclick="setText('{{pokemon.name|capfirst}}')">{{pokemon.name|capfirst}}</div>   
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="buildTeam"></div>
         </div>
     </template>
     <div class="flash">
@@ -53,11 +68,7 @@
         // Le js a été mis dans le dom pour utiliser le static tag (qui ne fonctionnait pas dans un autre fichier js)
         const dropdown = document.querySelector('.dropdown')
 
-        // avoid chart bug
-        // event listener to toggle active class 
-        dropdown.addEventListener('click', () => {
-            dropdown.classList.toggle('active')
-})
+        
 const charts = []
 /**
 * set the text selected in the query 
@@ -65,101 +76,59 @@ const charts = []
 function setText(value) {
     document.querySelector('.textBox').value = value
 }
-/**
-* add event listener on the input search to sort the select items with query
-*/
-document.querySelector('.textBox').addEventListener('keyup', (e)=> {
-    const value = document.querySelector('.textBox').value.toUpperCase();
-    const opt = document.querySelectorAll('.item')
-    for( i = 0; i < opt.length; i++){
-        let txtValue = opt[i].textContent || opt[i].innerText;
-        if (txtValue.toUpperCase().indexOf(value)> -1){
-            opt[i].style.display = "";
-        }else{
-            opt[i].style.display = "none"
-        }
-    }
-})
-// Add a event listener to all items in the select
-// When an item is clicked there is a request on the precise pokemon to get more informations
-// all the data is send on the dom with a template who's cloned
-const tab = []
-document.querySelectorAll('.item').forEach((item) => {
-    item.addEventListener('click',() => {
-        const flash = document.querySelector('.flash');
-        if(document.querySelector('.buildTeam').childElementCount >= 5){
-            flash.classList.add('flash-is-showing');
-            flash.textContent = "5 Pokemons are allowed !"
-            return;
-        }
-        if(document.querySelector('.buildTeam').childElementCount > 0){
-            for( let child of document.querySelector('.buildTeam').children){
-                if(child.classList.contains(item.textContent)){
-                    flash.classList.add('flash-is-showing');
-                    flash.textContent = "You already have this Pokemon"
-                    return;
-                }
-            }
-        }
-        
-        tab.push(item.textContent)
-        localStorage.setItem("pokemon",tab)
-        fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)
-       .then(res => res.json())
-       .then(
-        pokemon => {
-            
-            let template = document.getElementById('template_card')
-            let clone = template.content.cloneNode(true)
-            let card_img = clone.querySelector('.card_pokemon_team_img')
-            let div = clone.querySelector('.card_pokemon_team')
-            let img = document.createElement('img')
-            let svg = clone.querySelector('svg')
-            let canvas = clone.querySelector('#canvasStats')
-            let typeDiv = clone.querySelector('.types_div')
-            if(pokemon.types.length >= 1){
-                for(i=0; i< pokemon.types.length; i++){
-                    let div = document.createElement('div')
-                    let type = pokemon.types[i].type.name
-                    let img = document.createElement('img')
-                    let span = document.createElement('span')
-                    img.src = `{% static '/img/types/' %}${type}.svg`
-                    img.classList.add('svg-type')
-                    div.classList.add("card-type")
-                    div.classList.add(type)
-                    img.alt = "type_pokemon"
-                    span.textContent = type
-                    div.appendChild(img)
-                    div.appendChild(span)
-                    typeDiv.appendChild(div)    
-                }
-            }
-            svg.value = item.textContent
-            let spanTitle = clone.querySelector('#pokemon_name')
-            div.classList.add(item.textContent)
-            img.src = pokemon.sprites.other.dream_world.front_default ? pokemon.sprites.other.dream_world.front_default : pokemon.sprites.other.home.front_default
-            card_img.append(img)
-            spanTitle.textContent = item.textContent
-            charts.push(getStats(pokemon.stats,canvas))
-            switch(localStorage.getItem('mode')){
-                case 'light' : light();
-                checkboxTrigger.checked = false;
-                break;
-                case 'dark' : dark();
-                checkboxTrigger.checked = true;
-                break;
-                default : light();break;
-            }
-            // add the cloned template at the parent buildTeam
-            document.querySelector('.buildTeam').appendChild(clone)
-            })
-    })
-})
+
+
 /**
 * remove the pokemon card via this
 */
 function deletePokemon(any){
     document.querySelector('.'+any.value).remove()
+}
+//ajouter un param team
+function buildCard(pokemon,teamId){
+    let template = document.getElementById('template_card')
+    let clone = template.content.cloneNode(true)
+    let card_img = clone.querySelector('.card_pokemon_team_img')
+    let div = clone.querySelector('.card_pokemon_team')
+    let img = document.createElement('img')
+    let svg = clone.querySelector('svg')
+    let canvas = clone.querySelector('#canvasStats')
+    let typeDiv = clone.querySelector('.types_div')
+    if(pokemon.types.length >= 1){
+        for(i=0; i< pokemon.types.length; i++){
+            let div = document.createElement('div')
+            let type = pokemon.types[i].type.name
+            let img = document.createElement('img')
+            let span = document.createElement('span')
+            img.src = `{% static '/img/types/' %}${type}.svg`
+            img.classList.add('svg-type')
+            div.classList.add("card-type")
+            div.classList.add(type)
+            img.alt = "type_pokemon"
+            span.textContent = type
+            div.appendChild(img)
+            div.appendChild(span)
+            typeDiv.appendChild(div)    
+        }
+    }
+    svg.value = pokemon.name + "_team"+teamId
+    let spanTitle = clone.querySelector('#pokemon_name')
+    div.classList.add(pokemon.name + "_team"+teamId)
+    img.src = pokemon.sprites.other.dream_world.front_default ? pokemon.sprites.other.dream_world.front_default : pokemon.sprites.other.home.front_default
+    card_img.append(img)
+    spanTitle.textContent = pokemon.name
+    charts.push(getStats(pokemon.stats,canvas))
+    switch(localStorage.getItem('mode')){
+        case 'light' : light();
+        checkboxTrigger.checked = false;
+        break;
+        case 'dark' : dark();
+        checkboxTrigger.checked = true;
+        break;
+        default : light();break;
+    }
+    // add the cloned template at the parent buildTeam
+    document.querySelector('.buildTeam_'+teamId).appendChild(clone)
 }
 
       </script>

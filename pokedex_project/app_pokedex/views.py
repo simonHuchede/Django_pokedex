@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests as req
 from .models import Pokemon
 from django.core.cache import cache
+import json
 
 def index(request):
     pokemon_id = 1
