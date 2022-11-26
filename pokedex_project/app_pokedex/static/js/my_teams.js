@@ -112,8 +112,8 @@ function addTeam(){
     * add event listener on the input search to sort the select items with query
     */
     clone.querySelector('.TextBox_team_'+idTeam).addEventListener('keyup', (e)=> {
-        const value = document.querySelector('.textBox').value.toUpperCase();
-        const opt = document.querySelectorAll('.item')
+        const value = document.querySelector('.TextBox_team_'+idTeam).value.toUpperCase();
+        const opt = document.querySelectorAll('.item_team'+idTeam)
         for( i = 0; i < opt.length; i++){
             let txtValue = opt[i].textContent || opt[i].innerText;
             if (txtValue.toUpperCase().indexOf(value)> -1){
@@ -167,3 +167,9 @@ elmts.forEach( evt =>
 
     })
     )
+/**
+* remove the pokemon card via this
+*/
+function deletePokemon(any){
+    document.querySelector('.'+any.value).remove()
+}

@@ -153,6 +153,7 @@ canvas{
     text-align: center;
     padding: 0;
     margin: 0;
+    margin-top: 10px;
 }
 .add_team{
     cursor: pointer;
@@ -173,4 +174,29 @@ canvas{
 .btn_add_team:hover{
     transform: scale(1.1);
     
+}
+.team_container {
+    position: relative;
+    border: 1px solid var(--bigFont);
+    border-radius: 15px;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.container-teams{
+   margin: 5%;
+}
+.btn_delete_team{
+    position: absolute;
+    right: 7px;
+    cursor: pointer;
+    transition: .5s;
+    padding: 10px;
+    transform: scale(1.4);
+}
+.btn_delete_team > svg > path {
+    fill: rgb(143, 40, 65);
+}
+.btn_delete_team:hover{
+    transform:scale(1.8);
 }

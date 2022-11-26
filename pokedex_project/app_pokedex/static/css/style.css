@@ -258,12 +258,22 @@ label{
 }
 .results{
     display: none;
-    background-color: white;
+    background-color: rgb(209, 208, 208);
     position: absolute;
     z-index: 1000;
+    border-radius: 2px;
+    border: 2px solid white;
 }
 .results > a {
     z-index: 150000000;
+    text-decoration: none;
+    color: black
+}
+.results > a:visited{
+    color: black;
+}
+.results > a:hover{
+    background-color: var(--card_pokemon_team);
 }
 .search_pokemon{
     position: relative;
@@ -272,8 +282,10 @@ label{
     width: 200px;
     height: 40px;
     background-color: var(--bg_container);
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px;
     padding: 2px 0px 2px 5px;
+    color : var(--bigFont);
 }
 .search_pokemon > input::placeholder{
     color : var(--bigFont);

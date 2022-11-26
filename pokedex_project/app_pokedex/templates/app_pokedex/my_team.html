@@ -44,11 +44,11 @@
     </template>
     <template id="team">
         <div class="team_container">
-            <span>
+            <span class="btn_delete_team">
                 <svg class="svg_delete" onclick="deleteTeam(this)"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
                 </svg>
             </span>
-            <h2 class="team_name"></h2>
+            <h2 class="team_name bigText"></h2>
             <div class="dropdownContainer">
                 <div class="dropdown">
                     <input type="text" class="textBox" placeholder="Pokemons list">
@@ -70,20 +70,7 @@
 
         
 const charts = []
-/**
-* set the text selected in the query 
-*/
-function setText(value) {
-    document.querySelector('.textBox').value = value
-}
 
-
-/**
-* remove the pokemon card via this
-*/
-function deletePokemon(any){
-    document.querySelector('.'+any.value).remove()
-}
 //ajouter un param team
 function buildCard(pokemon,teamId){
     let template = document.getElementById('template_card')
