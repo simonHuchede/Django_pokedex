@@ -1,0 +1,18 @@
+{% extends './index.html' %}
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block stylesheet %}
+        {{block.super}}
+        {% endblock stylesheet %}
+        <link rel="stylesheet" href="{% static '/css/help.css '%}">
+        <title>Help</title>
+    </head>
+    <body>
+        {% block content %}
+            <h1>Help</h1>
+            
+        {% endblock %}

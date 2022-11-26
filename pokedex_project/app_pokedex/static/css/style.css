@@ -8,7 +8,6 @@
     --minFont : hsl(228, 12%, 44%);
     --toggle : hsl(230, 22%, 74%);
     --navFont : hsl(232, 19%, 15%);
-    --inputSearch : rgba(174, 178, 185, 0.27);
     --headerTab : orange;
     transition: ease-in .5s; 
 }
@@ -25,7 +24,6 @@
     --minFont : hsl(228, 34%, 66%);
     --toggle : linear-gradient(hsl(210, 78%, 56%),hsl(146, 68%, 55%));
     --headerTab : orange;
-    --inputSearch :white;   
     transition: ease-in .5s;
 }
 .bigText{
@@ -268,7 +266,7 @@ label{
 .search_pokemon > input{
     width: 200px;
     height: 40px;
-    background-color: var(--inputSearch);
+    background-color: var(--bg_container);
     border-radius: 10px;
     padding: 2px 0px 2px 5px;
 }

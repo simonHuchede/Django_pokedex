@@ -76,3 +76,7 @@ def moves(request, pokemon_id) :
         "movesList" : sorted(movesList, key=lambda k: k['name'])
     }
     return render(request, 'app_pokedex/moves.html', context)
+
+def help(request) :
+
+    return render(request,"app_pokedex/help.html")

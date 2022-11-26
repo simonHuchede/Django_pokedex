@@ -83,6 +83,7 @@ document.querySelector('.textBox').addEventListener('keyup', (e)=> {
 // Add a event listener to all items in the select
 // When an item is clicked there is a request on the precise pokemon to get more informations
 // all the data is send on the dom with a template who's cloned
+const tab = []
 document.querySelectorAll('.item').forEach((item) => {
     item.addEventListener('click',() => {
         const flash = document.querySelector('.flash');
@@ -100,10 +101,14 @@ document.querySelectorAll('.item').forEach((item) => {
                 }
             }
         }
+        
+        tab.push(item.textContent)
+        localStorage.setItem("pokemon",tab)
         fetch(`https://pokeapi.co/api/v2/pokemon/${item.textContent.toLowerCase()}`)
        .then(res => res.json())
        .then(
         pokemon => {
+            
             let template = document.getElementById('template_card')
             let clone = template.content.cloneNode(true)
             let card_img = clone.querySelector('.card_pokemon_team_img')
