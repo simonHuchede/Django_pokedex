@@ -94,10 +94,11 @@ function addTeam(){
     let item = clone.querySelectorAll('.item')
     let teamName = clone.querySelector('.team_name')
     let teamDiv = clone.querySelector('.team_container')
+    let svg = clone.querySelector('.svg_delete')
     idTeam++
     item.forEach((item)=>item.classList.add('item_team'+idTeam))
     teamDiv.classList.add('team_container'+idTeam)
-    teamDiv.value = idTeam
+    svg.value = idTeam
     dropDown.classList.add('team_'+idTeam)
     teamName.textContent = "Team n°"+idTeam
     buildTeam.classList.add('buildTeam_'+idTeam)
