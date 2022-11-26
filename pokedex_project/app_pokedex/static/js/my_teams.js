@@ -144,3 +144,26 @@ function addTeam(){
     })
     document.querySelector('.container-teams').appendChild(clone)
 }
+/**
+* add event listener on the input search to sort the select items with query
+*/
+let elmts = ['click', 'keyup']
+const input = document.querySelector("#input_search");
+elmts.forEach( evt =>
+    input.addEventListener(evt, ()=> {
+        const value = input.value.toUpperCase();
+        const opt = document.querySelectorAll('.option')
+        if(value.length >= 3){
+            for( i = 0; i < opt.length; i++){
+                let txtValue = opt[i].textContent || opt[i].innerText;
+                document.querySelector('.results').classList.add('active')
+                if (txtValue.toUpperCase().indexOf(value)> -1){
+                    opt[i].style.display = "";
+                }else{
+                    opt[i].style.display = "none"
+                }
+            }
+        }
+
+    })
+    )

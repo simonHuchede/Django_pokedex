@@ -29,7 +29,7 @@ def index(request):
             result['types'],
             result['base_experience'],
             result['abilities'],
-            result['sprites']['other']['dream_world']['front_default'],
+            result['sprites']['other']['dream_world']['front_default'] if result['sprites']['other']['dream_world']['front_default'] else result['sprites']['other']['home']['front_default'] ,
             stats
             )
         result = cache.get('listPokemon')

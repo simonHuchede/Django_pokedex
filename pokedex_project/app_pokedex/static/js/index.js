@@ -77,7 +77,7 @@ elmts.forEach( evt =>
     input.addEventListener(evt, ()=> {
         const value = input.value.toUpperCase();
         const opt = document.querySelectorAll('.option')
-        if(value.length >= 4){
+        if(value.length >= 3){
             for( i = 0; i < opt.length; i++){
                 let txtValue = opt[i].textContent || opt[i].innerText;
                 document.querySelector('.results').classList.add('active')
